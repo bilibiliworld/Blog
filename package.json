@@ -10,10 +10,10 @@
     "netlify": "npm run clean && npm run build"
   },
   "hexo": {
-    "version": "7.1.1"
+    "version": "6.3.0"
   },
   "dependencies": {
-    "hexo": "^7.0.0",
+    "hexo": "^6.3.0",
     "hexo-bilibili-bangumi": "^1.8.9",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
@@ -27,5 +27,9 @@
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^1.0.0",
     "pwa-asset-generator": "^6.3.1"
-  }
+  },
+  "description": "\"# new_blog\"",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
