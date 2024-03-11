@@ -722,7 +722,7 @@ display_mode: light
 beautify:
   enable: true
   field: post # site/post
-  title-prefix-icon: '\f0c1'
+  title-prefix-icon: '\f863'
   title-prefix-icon-color: "#F47466"
 
 # Global font settings
@@ -1015,7 +1015,7 @@ lazyload:
 # See https://github.com/JLHwung/hexo-offline
 # ---------------
 pwa:
-  enable: false
+  enable: true
   startup_image_enable: true
   manifest: /manifest.json
   theme_color: var(--anzhiyu-main)
@@ -1222,7 +1222,7 @@ dynamicEffect:
 inject:
   head:
     # 自定义css
-    # - <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'">
+    - <link rel="stylesheet" href="/css/custom.css">
     - <link rel="stylesheet" href="/css/mouse.css">
     - <link rel="stylesheet" href="/css/cursor.css">
 
