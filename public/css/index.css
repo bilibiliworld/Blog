@@ -319,20 +319,24 @@ hr:before,
   border-radius: 0;
 }
 .list-beauty,
-.category-lists ul {
+.category-lists ul,
+#algolia-search .search-dialog .ais-Hits-list {
   list-style: none;
 }
 .list-beauty li,
-.category-lists ul li {
+.category-lists ul li,
+#algolia-search .search-dialog .ais-Hits-list li {
   position: relative;
   padding: 0.12em 0.4em 0.12em 1.4em;
 }
 .list-beauty li:hover:before,
-.category-lists ul li:hover:before {
+.category-lists ul li:hover:before,
+#algolia-search .search-dialog .ais-Hits-list li:hover:before {
   border-color: var(--pseudo-hover);
 }
 .list-beauty li:before,
-.category-lists ul li:before {
+.category-lists ul li:before,
+#algolia-search .search-dialog .ais-Hits-list li:before {
   position: absolute;
   top: 0.67em;
   left: 0;
@@ -1609,7 +1613,7 @@ i.anzhiyu-icon-hashtag {
   --anzhiyu-meta-theme-color: #f7f9fe;
   --anzhiyu-theme-op-deep: rgba(66,89,239,0.867);
   --global-bg: #f7f9fe;
-  --anzhiyu-theme: #425aef;
+  --anzhiyu-theme: #ed709b;
   --anzhiyu-theme-deep: #1856fb;
   --anzhiyu-theme-op: rgba(66,89,239,0.137);
   --anzhiyu-blue: #5ca1ff;
@@ -1650,7 +1654,7 @@ i.anzhiyu-icon-hashtag {
   --anzhiyu-blue-tint: rgba(92,161,255,0.1);
   --anzhiyu-theme-op-deep: rgba(0,132,255,0.867);
   --global-bg: #18171d;
-  --anzhiyu-theme: #f2b94b;
+  --anzhiyu-theme: #425aef;
   --anzhiyu-theme-deep: #0076e5;
   --anzhiyu-theme-op: rgba(242,185,75,0.137);
   --anzhiyu-blue: #0084ff;
@@ -10487,6 +10491,108 @@ li.card-category-list-item {
 }
 #body-wrap.open #anMusic-page-meting .aplayer.aplayer-withlist .aplayer-list {
   display: none;
+}
+.Cuteen_DarkSky,
+.Cuteen_DarkSky:before {
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 88888888;
+}
+.Cuteen_DarkSky {
+  background: linear-gradient(to top, #f8cd71 0, #5bfde9 80%);
+}
+.Cuteen_DarkSky:before {
+  transition: 2s ease all;
+  opacity: 0;
+  background: linear-gradient(to top, #30cfd0 0, #330867 100%);
+}
+.DarkMode .Cuteen_DarkSky:before {
+  opacity: 1;
+}
+.Cuteen_DarkPlanet {
+  z-index: 99999999;
+  position: fixed;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  -webkit-animation: CuteenPlanetMove 2s cubic-bezier(0.7, 0, 0, 1);
+  animation: CuteenPlanetMove 2s cubic-bezier(0.7, 0, 0, 1);
+  transform-origin: center bottom;
+}
+@-webkit-keyframes CuteenPlanetMove {
+  0% {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.Cuteen_DarkPlanet #sun {
+  position: absolute;
+  border-radius: 100%;
+  left: 44%;
+  top: 30%;
+  height: 6rem;
+  width: 6rem;
+  background: #ffee94;
+  box-shadow: 0 0 40px #ffee94;
+}
+.Cuteen_DarkPlanet #moon {
+  position: absolute;
+  border-radius: 100%;
+  left: 44%;
+  top: 30%;
+  position: absolute;
+  border-radius: 100%;
+  height: 6rem;
+  width: 6rem;
+  box-shadow: -1.8em 1.8em 0 0.2em #fff;
+}
+.search span {
+  display: none;
+}
+.menus_item a {
+  text-decoration: none !important;
+}
+.icon-V {
+  padding: 5px;
+}
+@-moz-keyframes CuteenPlanetMove {
+  0% {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes CuteenPlanetMove {
+  0% {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes CuteenPlanetMove {
+  0% {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes CuteenPlanetMove {
+  0% {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 #vcomment {
   font-size: 1.1em;
@@ -20910,3 +21016,233 @@ div#runtime {
   transform: translateY(-100%);
 }
 
+.search-dialog {
+  position: fixed;
+  top: 5rem;
+  left: 50%;
+  z-index: 1001;
+  display: none;
+  margin-left: -18.75rem;
+  padding: 1.25rem;
+  width: 37.5rem;
+  border-radius: 8px;
+  background: var(--search-bg);
+  border-radius: 12px;
+  box-shadow: var(--anzhiyu-shadow-lightblack);
+  background: var(--anzhiyu-card-bg);
+  border: var(--style-border);
+  transition: 0.3s;
+}
+@media screen and (max-width: 768px) {
+  .search-dialog {
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 !important;
+  }
+}
+@media screen and (max-height: 680px) {
+  .search-dialog {
+    top: 2rem;
+  }
+}
+@media screen and (max-height: 580px) {
+  .search-dialog {
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 !important;
+  }
+}
+.search-dialog hr {
+  margin: 20px auto;
+}
+.search-dialog .search-nav {
+  margin: 0 0 14px;
+  color: #425aef;
+  font-size: 1.4em;
+  line-height: 1;
+}
+.search-dialog .search-nav .search-dialog-title {
+  margin-right: 10px;
+}
+.search-dialog .search-nav .search-close-button {
+  float: right;
+  color: #858585;
+  transition: color 0.2s ease-in-out;
+}
+.search-dialog .search-nav .search-close-button:hover {
+  color: #425aef;
+}
+#search-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  background: rgba(0,0,0,0.6);
+}
+#algolia-search .search-dialog .ais-SearchBox input {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  outline: none;
+  border: var(--style-border);
+  border-radius: var(--anzhiyu-radius);
+  background: var(--anzhiyu-secondbg);
+  color: var(--search-input-color);
+}
+#algolia-search .search-dialog .ais-SearchBox input:focus {
+  border: var(--style-border-hover);
+}
+#algolia-search .search-dialog .search-dialog-title {
+  font-weight: 700;
+  color: var(--anzhiyu-main);
+}
+#algolia-search .search-dialog .ais-Hits-list {
+  margin: 0;
+  padding: 0;
+}
+#algolia-search .search-dialog .ais-Hits-list .ais-Hits-item:hover {
+  background: var(--anzhiyu-main);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+#algolia-search .search-dialog .ais-Hits-list .ais-Hits-item:hover a {
+  color: var(--anzhiyu-white);
+}
+#algolia-search .search-dialog .ais-Hits-list mark {
+  background: transparent;
+  color: #f47466;
+  font-weight: bold;
+}
+#algolia-search .search-dialog .algolia-hit-item-content {
+  margin: 0 0 8px;
+  word-break: break-all;
+}
+#algolia-search .search-dialog .ais-Pagination {
+  margin: 20px 0 0;
+  padding: 0;
+  text-align: center;
+}
+#algolia-search .search-dialog .ais-Pagination .ais-Pagination-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#algolia-search .search-dialog .ais-Pagination .ais-Pagination-item {
+  display: inline;
+  margin: 0 4px;
+  padding: 0;
+}
+#algolia-search .search-dialog .ais-Pagination .ais-Pagination-item .ais-Pagination-link {
+  display: inline-block;
+  min-width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+}
+#algolia-search .search-dialog .ais-Pagination .ais-Pagination-item--selected a {
+  background: #425aef;
+  color: #eee;
+  cursor: default;
+}
+#algolia-search .search-dialog .ais-Pagination .ais-Pagination-item--disabled {
+  visibility: hidden;
+}
+#algolia-search .search-dialog .algolia-logo {
+  padding-top: 2px;
+  width: 80px;
+  height: 30px;
+}
+#algolia-search .search-dialog #algolia-hits {
+  overflow-y: scroll;
+  min-height: 20px;
+}
+#algolia-search .search-dialog #algolia-hits .tag-list {
+  padding: 4px 8px;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  border: var(--style-border-always);
+  cursor: pointer;
+}
+#algolia-search .search-dialog #algolia-info div {
+  display: inline;
+}
+#algolia-search .search-dialog #algolia-info .algolia-poweredBy {
+  float: right;
+}
+#algolia-search #search-mask {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: var(--anzhiyu-maskbg);
+}
+#algolia-search .search-dialog {
+  border-radius: 12px;
+  box-shadow: var(--anzhiyu-shadow-lightblack);
+  background: var(--anzhiyu-card-bg);
+  border: var(--style-border);
+  transition: 0.3s;
+}
+#algolia-search .search-dialog .ais-Pagination .ais-Pagination-item--selected a {
+  border-radius: 4px;
+  background: var(--anzhiyu-main);
+  color: var(--anzhiyu-white);
+}
+#algolia-search .search-dialog:hover {
+  border: var(--style-border-hover);
+  box-shadow: var(--anzhiyu-shadow-theme);
+}
+@media screen and (max-width: 768px) {
+  #algolia-search .search-dialog:hover {
+    border: var(--style-border);
+  }
+}
+#algolia-search .list-beauty li,
+#algolia-search .category-lists ul li,
+#algolia-search .search-dialog .ais-Hits-list li {
+  padding: 0;
+}
+#algolia-search .list-beauty li:before,
+#algolia-search .category-lists ul li:before,
+#algolia-search .search-dialog .ais-Hits-list li:before {
+  display: none;
+}
+#algolia-search .list-beauty li,
+#algolia-search .category-lists ul li,
+#algolia-search .search-dialog .ais-Hits-list li {
+  border-radius: 8px;
+  border: var(--style-border);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#algolia-search .search-dialog .ais-Hits-list a {
+  color: var(--search-result-title);
+  display: block;
+  font-weight: 600;
+  padding: 5px 10px;
+  width: 100%;
+  transition: all 0.2s;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#algolia-search .search-dialog .ais-Hits-list .search-result-tags a {
+  padding: 4px 8px;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  border: var(--style-border);
+  display: inline;
+}
+#algolia-search .ais-SearchBox-loadingIndicator {
+  display: none;
+}

@@ -6,14 +6,14 @@ menu:
 
   友链:
     友人帐: /link/ || anzhiyu-icon-link
-    朋友圈: /fcircle/ || anzhiyu-icon-artstation
+    # 朋友圈: /fcircle/ || anzhiyu-icon-artstation
     留言板: /comments/ || anzhiyu-icon-envelope
 
   我的:
-    音乐馆: /music/ || anzhiyu-icon-music
-    追番页: /bangumis/ || anzhiyu-icon-bilibili
+    音乐馆: /music/?id=7461260719&server=netease || anzhiyu-icon-music
+    # 追番页: /bangumis/ || anzhiyu-icon-bilibili
     相册集: /album/ || anzhiyu-icon-images
-    小空调: /air-conditioner/ || anzhiyu-icon-fan
+    # 小空调: /air-conditioner/ || anzhiyu-icon-fan
 
   关于:
     关于本人: /about/ || anzhiyu-icon-paper-plane
@@ -31,6 +31,12 @@ nav:
         - name: 博客
           link: https://loliking.xyz/
           icon: /img/favicon.ico
+        - name: 个人导航
+          link: https://lolinav.netlify.app/#/side
+          icon: /img/favicon2.ico
+        - name: 个人网盘
+          link: https://loliking.ddnsto.com/
+          icon: /img/favicon3.ico
 
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
 # 注意： 仅网站首页变灰，其他页面正常显示
@@ -85,7 +91,7 @@ author_status:
 
 # Algolia search
 algolia_search:
-  enable: false
+  enable: true
   hits:
     per_page: 6
   tags:
@@ -131,7 +137,7 @@ katex:
 # --------------------------------------
 
 # Favicon（网站图标）
-favicon: /favicon.ico
+favicon: /favicon_new.ico
 
 # Avatar (头像)
 avatar:
@@ -582,7 +588,7 @@ site_verification:
   - name: google-site-verification
     content: xxx
   - name: baidu-site-verification
-    content: code-xxx
+    content: codeva-xOTCBjbhZf
   - name: msvalidate.01
     content: xxx
 
@@ -1009,7 +1015,7 @@ lazyload:
 # See https://github.com/JLHwung/hexo-offline
 # ---------------
 pwa:
-  enable: true
+  enable: false
   startup_image_enable: true
   manifest: /manifest.json
   theme_color: var(--anzhiyu-main)
@@ -1066,7 +1072,7 @@ friends_vue:
   vue_js: https://npm.elemecdn.com/anzhiyu-theme-static@1.1.1/friends/index.4f887d95.js
   apiurl: # 朋友圈后端地址
   top_tips: 使用 友链朋友圈 订阅友链最新文章
-  top_background:
+  top_background: https://img02.anheyu.com/adminuploads/1/2022/08/21/630249e2df20f.jpg
 
 # 深色模式粒子效果canvas
 universe:
@@ -1089,8 +1095,8 @@ LA:
 # 标签卖萌
 diytitle:
   enable: true
-  leaveTitle: w(ﾟДﾟ)w 不要走！再看看嘛！
-  backTitle: ♪(^∇^*)欢迎肥来！
+  leaveTitle: 主人，随时待命-
+  backTitle: 恭迎王的归来~
 
 # 留言弹幕配置
 comment_barrage_config:
@@ -1109,10 +1115,10 @@ comment_barrage_config:
 nav_music:
   enable: true
   console_widescreen_music: false # 宽屏状态控制台显示音乐而不是标签 enable为true 控制台依然会显示
-  id: 8152976493
+  id: 7461260719
   server: netease
   volume: 0.7 # 默认音量
-  all_playlist: https://y.qq.com/n/ryqq/playlist/8802438608
+  all_playlist: https://music.163.com/#/playlist?id=7461260719
 
 # 评论匿名邮箱
 visitorMail:
@@ -1182,13 +1188,13 @@ accesskey:
 
 # 友情链接顶部相关配置
 linkPageTop:
-  enable: false
+  enable: true
   title: 与数百名博主无限进步
   # 添加博主友链的评论自定义格式
   addFriendPlaceholder: "昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"
 
 # 缩略图后缀 archive/tag/category 页面单独开启后缀
-pageThumbnailSuffix: ""
+pageThumbnailSuffix: "!page_thumbnail"
 
 # 隐私协议弹窗
 agreementPopup:
@@ -1197,7 +1203,7 @@ agreementPopup:
 
 # 右键菜单
 rightClickMenu:
-  enable: true
+  enable: false
 
 # 首页随便逛逛people模式 而非技能点模式，关闭后为技能点模式需要配置creativity.yml
 peoplecanvas:
@@ -1224,6 +1230,8 @@ inject:
     # 自定义js
     # - <script src="/js/xxx"></script>
     - <script src="/js/cursor.js"></script>
+    - <script src="/js/sun_moon.js" async></script>
+
 
 # CDN
 # Don't modify the following settings unless you know how they work
