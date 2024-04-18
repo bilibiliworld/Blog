@@ -13,7 +13,7 @@
     "version": "6.3.0"
   },
   "dependencies": {
-    "hexo": "^6.3.0",
+    "hexo": "^7.2.0",
     "hexo-algoliasearch": "^2.0.1",
     "hexo-bilibili-bangumi": "^1.8.9",
     "hexo-butterfly-envelope": "^1.0.15",
