@@ -9397,6 +9397,23 @@ hr:before {
   transition: all 0.3s ease-in-out;
 }
 
+/* 页脚样式 */
+.footer-info {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-info span {
+  white-space: nowrap;
+}
+
+.footer-spacer {
+  height: 1em; /* 您可以根据需要调整这个值 */
+  width: 100%;
+}
+
 .search-dialog {
   position: fixed;
   top: 10%;
