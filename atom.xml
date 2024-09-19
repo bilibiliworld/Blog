@@ -155,9 +155,9 @@
     <category term="文章" scheme="https://002026.xyz/categories/%E6%96%87%E7%AB%A0/"/>
     
     
-    <category term="matery-pro" scheme="https://002026.xyz/tags/matery-pro/"/>
-    
     <category term="hexo" scheme="https://002026.xyz/tags/hexo/"/>
+    
+    <category term="matery-pro" scheme="https://002026.xyz/tags/matery-pro/"/>
     
     <category term="美化" scheme="https://002026.xyz/tags/%E7%BE%8E%E5%8C%96/"/>
     
@@ -243,11 +243,11 @@
     <category term="文章" scheme="https://002026.xyz/categories/%E6%96%87%E7%AB%A0/"/>
     
     
+    <category term="matery-pro" scheme="https://002026.xyz/tags/matery-pro/"/>
+    
     <category term="Hexo" scheme="https://002026.xyz/tags/Hexo/"/>
     
     <category term="live2d" scheme="https://002026.xyz/tags/live2d/"/>
-    
-    <category term="matery-pro" scheme="https://002026.xyz/tags/matery-pro/"/>
     
   </entry>
   
