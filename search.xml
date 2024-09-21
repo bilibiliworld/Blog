@@ -11,6 +11,20 @@
         <content type="html"><![CDATA[<h1>清除pip缓存</h1><p>pip cache purge</p><h1>删除没有用的包</h1><p>conda clean -p</p><h1>删除tar打包</h1><p>conda clean -t</p><h1>删除无用的包和缓存</h1><p>conda clean --all</p><h1>删除.cache文件</h1><h1>win+i,系统-存储-删除临时文件</h1>]]></content>
       
       
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 桌面维护 </tag>
+            
+            <tag> conda </tag>
+            
+        </tags>
       
     </entry>
     
@@ -18,15 +32,15 @@
     
     <entry>
       <title>AI绘画原理</title>
-      <link href="/posts/51136.html"/>
-      <url>/posts/51136.html</url>
+      <link href="/posts/66a7dd7.html"/>
+      <url>/posts/66a7dd7.html</url>
       
         <content type="html"><![CDATA[<h2 id="ai生成图片原理">ai生成图片原理</h2><p>ai生成图片包含两个部分：<strong>蓝色的用于理解描述的自然语言处理器</strong>和<strong>红色的用于生成结果的生成器</strong>。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/72bd6e6390402c676cf053a8b519ee7efdcfedb8.png@1256w_520h_!web-article-pic.webp" alt=""><br>在自然语言处理部分，它将我们输入的文本转换为数字表示，也就是蓝色的部分。对于不同的文本，其转换为的数字量也有区别，这就是显示在我们输入框右下角的输入量。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/7106bdf89a5b540a37565d98a51c17dc7d617e48.png@1256w_764h_!web-article-pic.webp" alt=""><br>被蓝色的自然语言处理器解析后的输入表述会通过CLIP网络结合图像，以数组的形式保存下来，即下图中蓝色方格的token embedding。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/4b600b6cc5a2f55d39696dc8c1c87dfea9ba369c.png@1256w_484h_!web-article-pic.webp" alt=""><br>CLIP网络就是理解tags如何被写入模型的关键点。下图就是CLIP网络在训练过程中是如何将tags与图像进行结合的。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/e6cd2d8d0f051458ca573dba370fcef638232ee7.png@1256w_782h_!web-article-pic.webp" alt=""><br>输入的文字描述和图片将会经过两个不同的Encoder(神经网络)进行编码，形成两串数组。在CLIP中，它们将进行对比训练，从而将文本和图片一一对应上。这个过程就是训练这两个Encoder，之后这两个Encoder会在text2img和img2text中发挥作用。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/56549f0bd1016219dfe01c0fb0ed4075b4ba2f68.png@1256w_906h_!web-article-pic.webp" alt=""><br>在上图第一部分中，Encoder会<strong>有顺序地</strong>一个个编码输入的tags，然后根据相关性计算找到最接近原意的token。<br>每一组输入词会形成一个token集合，这个集合可以看作一个数组。在上图的第二部分中，这个token数组将与高斯噪声融合，经过<strong>红色的图像生成器</strong>，生成一个图块。如果tags很长，就会有多个这样的token组，每一组生成图块后，就进行下一组的生成，最后将图块结合在一起。这也就是为什么输入提示词时必须要讲究顺序。<br>当经过这样一次过程，生成了一张模糊的图像，<strong>这就是一个step</strong>。<br>在下一次step中，数组里的数会和上一轮生成的图像一起输入红色的图像生成器，来生成一个更接近需求的图像，这样的反复过程就是<strong>迭代</strong>。<br>最后就是<strong>黄色的图像放大器</strong>了，帮助我们把一副小的图像放大成我们想要的图像大小，并在过程丰富细节。</p><h2 id="AI工作流程的总结">AI工作流程的总结</h2><ol><li>我们输入的词句，会被蓝色的自然语言处理器解析成一个个数字，存进蓝色的数组中。</li><li>这个输入数组会按顺序结合高斯噪声输入到红色的生成器中，生成粗糙的图像。</li><li>将粗糙的图与输入数组重复第二步，对生成的图像进行迭代。</li><li>将迭代完的输入黄色的放大器，扩大图像分辨率，使图像细致。</li></ol><p>通过这个过程，首先我们可以看到，为什么ai画不好手脚，因为ai在生成图像的过程中，图像都是以一个小尺寸在进行迭代，最后再进行放大。像手，脚趾这类细小的物体，一开始占据的原始像素就少，所以放大后效果也不好。<br>另一点就是，ai读取文本是有顺序性的，所以才有了各种咒语的格式。<br>最后就是，我们手动写的单词性的tags，其实就是帮ai做了蓝色自然语言处理里的词句分割工作。<br>虽然webui目前可以输入超量的输入量，但是webui会按<strong>最长75个为一组</strong>的输入量把tags放入CLIP，分多组放入你的输入文本。这个采样器可以在设置中调整，默认为20。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/Stable%20Diffusion%20%E5%92%8C%E5%8F%A6%E5%A4%96%202%20%E4%B8%AA%E9%A1%B5%E9%9D%A2%20-%20%E4%B8%AA.png" alt=""><br>也就是说，如果你输入的提示词过长的话，可能你写一个长句，其中的形容词和名字被分到了不同的CLIP组中，<strong>这就会造成污染</strong>。</p><p>基于以上这些结论，我们可以推断出：</p><ol><li>为什么长句和强短句，比零碎的单词污染少？因为零碎的单词缺少了元素间的联系，而ai也没办法自己去联想到这个联系。而长句和强短句，ai可以通过自己进行自然语言处理，收集到一些元素间的联系。</li><li>为什么长句联系好却不够稳定？因为ai是sb，有时候进自然语言处理时句子分析得不好。</li><li>为什么ai画不好细节的东西，因为ai一开始只在很小分辨率的图上画，而小东西分配到的像素太少了。</li><li>为什么ai画不好长的有连续性的东西？理由基本同上，长的东西在小图上可能是连续的，但是放大后就不一定了。</li></ol><h2 id="P-S-一些ai绘画技巧总结">P.S.一些ai绘画技巧总结</h2><p>我们可以思考一个大概的画面，然后通过广义三段式的思想来丰富场景的内容。</p><p>通过对一个主体进行<strong>三段式拆分</strong>，然后将每个小短句拆分到整个tags中，利用<strong>多次描述</strong>的强化叠加效果来强化主体的表现。同时因为对主体的完整描述进行了拆分，这个方法可以把几个颜色组隔离到几个段落中，从而减少污染。</p><p>最后再根据需求，使用<strong>分步渲染</strong>等进阶技术，来调整部分语句的内容或者顺序，使画面更接近所需要的情况。</p><p><strong>三段式</strong>就是：质量前缀+主体描述+背景描述。</p><p>基于广义三段式的思想：目标，定义，细节，我们<strong>对人物的描写进行拆分</strong>。比如分为人物的总体概况，面貌，装饰，衣着，并将环境描写以人物与环境的关系的方式，穿插进人物描写中。可以用<strong>分段</strong>的方式表现这种拆分。在每一段的末尾，我们可以加入与人物有关的环境描写。</p><p>当然我们要理解，ai的自然语言处理功能没有想象中那么好使，我们还是得帮ai简单处理一下句子，<strong>把关键词提取出来</strong>，尽量减少逻辑主语的变化。</p><p>多次描述叠加强化也被叫<strong>多重渲染</strong>，一方面就像是传统写作中对同一目标的多侧面描写丰富细节从而起到强调的作用，另一方面也是利用这个多段的方式，方便穿插背景或<strong>占位词</strong>用于隔断污染。</p><p>我们用<code>【+++tags+++】</code>（<strong>符号占位词</strong>）的语法来提升女孩脸的渲染程度，并且增强女孩面貌描写的权重以获得更清晰，更靠近镜头的人物。这个语法大概是来自一个bug或者也可以当做是占位词的延伸应用。</p><p>做占位的只是+++, tags是我们要写的词比如<code>【+++ hands +++】</code>，占位词会增加输入量的大小，但是几乎不影响意思，原本hands就占一个输入量，现在这么写了就占了7个输入量（6个+和1个hands）。</p><p>接下来我们对小的物件使用<strong>分步渲染</strong>，在图像整体成型后再进行绘制。语法为：[from:to:step]，from就是在step之前进行绘制，to就是在step之后进行绘制。也可以使用[from::step]和[:to:step]。</p><p>ai is sb是一个<strong>占位词</strong>，他的作用就用来隔断前后，避免污染，可以将其使用在不同分段的包含颜色的描述句两段。如<code>ai is sb, the girl has a blue ribbon,[: star earrings, : 0.5 ] ai is sb,</code></p><p>对难度较大的东西，例如手，我们可以用emoji加强绘制。Emoji经过了独特的训练，具有很强的指向性。正常情况下，手通常在50%左右开始进行绘制，所以我们在这个阶段把手的强化加入，避免过早加入而产生很多个手的问题。<code>[[:✋,:0.5]::0.8]</code>这个词条意思就是从50%开始启用到80%截止。</p><p>正向tags示例：</p><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(((masterpiece))), (<span class="keyword">extremely </span>detailed <span class="number">8</span>k wallpaper),(((<span class="keyword">best </span>quality))), ((ultra-detailed)),(<span class="keyword">best </span>illumination, <span class="keyword">best </span><span class="keyword">shadow), </span>((an <span class="keyword">extremely </span>delicate <span class="keyword">and </span><span class="keyword">beautiful)),(best </span>illustration), dynamic angle,floating,realistic oil painting,</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>beautifully <span class="keyword">and </span>detailed girl sitting near water, solo, mid <span class="keyword">shot,</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line">(the girl has a [+++<span class="keyword">beautifully </span>detailed cute face+++]:<span class="number">1</span>.<span class="number">4</span>), (<span class="keyword">beautiful </span><span class="keyword">and </span>detailed red eyes:<span class="number">1</span>.<span class="number">2</span>), (long <span class="keyword">blonde </span>hair with a wide <span class="keyword">brim </span>hat),[[:✋,:<span class="number">0</span>.<span class="number">5</span>]::<span class="number">0</span>.<span class="number">8</span>] [smile],the girl sitting near a river, <span class="keyword">beautiful </span><span class="keyword">and </span>delicate water,</span><br><span class="line"></span><br><span class="line">ai is <span class="keyword">sb, </span>the girl has a <span class="keyword">blue </span>ribbon,[: star earrings, : <span class="number">0</span>.<span class="number">5</span> ] ai is <span class="keyword">sb, </span>standing in a Flowery meadow, trees <span class="keyword">and </span>colourful (wildflowers) <span class="keyword">blooming </span>surround,</span><br><span class="line"></span><br><span class="line">(the girl wearing a gorgeous white <span class="keyword">and </span>light <span class="keyword">blue </span>dress:<span class="number">1</span>.<span class="number">1</span>), with gold patterns <span class="keyword">and </span>lace, upper <span class="keyword">body, </span>(clear sky, Cumulus:<span class="number">1</span>.<span class="number">2</span>), sunlight, <span class="keyword">bright </span>spots, glowing, the girl <span class="keyword">and </span>forest are <span class="keyword">shining,</span></span><br></pre></td></tr></table></figure><p>最后再对负面词条按照重要性顺序进行一波调整：将比较重要的负面词提到前面，在开始渲染细节后，增加细节的负面词组。清理负面词组中的重复、错误单词。以下为负面tags示例：</p><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ugly,lowres, <span class="keyword">bad </span>anatomy,worst quality, low quality, <span class="keyword">normal </span>quality,</span><br><span class="line"></span><br><span class="line">[:((No more than one thumb, index finger, middle finger, ring finger <span class="keyword">and </span>little finger on one hand),(mutated hands <span class="keyword">and </span>fingers:<span class="number">1</span>.<span class="number">5</span> ), fused ears, one hand with more than <span class="number">5</span> fingers, one hand with less than <span class="number">5</span> fingers,):<span class="number">0</span>.<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">bad </span>hands, text, error, missing fingers, <span class="keyword">extra </span><span class="keyword">digit, </span>fewer <span class="keyword">digits, </span>cropped, <span class="keyword">jpeg </span>artifacts, signature, watermark, username, <span class="keyword">blurry, </span>Missing limbs, three arms, <span class="keyword">bad </span>feet, text font ui, signature, <span class="keyword">blurry, </span>malformed hands, long neck, mutated hands <span class="keyword">and </span>fingers :<span class="number">1</span>.<span class="number">5</span>).(long <span class="keyword">body </span>:<span class="number">1</span>.<span class="number">3</span>),(mutation ,poorly drawn :<span class="number">1</span>.<span class="number">2</span>), <span class="keyword">disfigured, </span>malformed, mutated, <span class="keyword">multiple </span><span class="keyword">breasts, </span>futa, yaoi, three legs, huge <span class="keyword">breasts,</span></span><br></pre></td></tr></table></figure><p>本文参考了<a href="https://www.bilibili.com/read/cv19790550">完整tag书写思路</a>，具体内容可点击链接去看。</p>]]></content>
       
       
       <categories>
           
-          <category> 文章 </category>
+          <category> 科普 </category>
           
       </categories>
       
@@ -35,7 +49,7 @@
             
             <tag> ai绘画 </tag>
             
-            <tag> 教程 </tag>
+            <tag> 原理 </tag>
             
         </tags>
       
@@ -45,11 +59,17 @@
     
     <entry>
       <title>SD艺术字与二维码</title>
-      <link href="/posts/45413.html"/>
-      <url>/posts/45413.html</url>
+      <link href="/posts/e917dbbd.html"/>
+      <url>/posts/e917dbbd.html</url>
       
         <content type="html"><![CDATA[<h2 id="SD艺术字">SD艺术字</h2><ol><li>使用ps生成白底黑字的png文件</li><li>拖到controlnet中，预处理器为midas，模型为depth</li><li>输入正反提示词，如：</li></ol><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">high quality,highres,masterpiece,soild background,</span><br><span class="line">flower,dappled sunlight,<span class="keyword">from</span> <span class="keyword">above</span>, bunch <span class="keyword">of</span> flowers,outdoors,grasslands, <span class="keyword">from</span> <span class="keyword">above</span></span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/%E2%80%9C%E7%89%9B%E9%80%BC%E2%80%9D%E7%9A%84%E6%95%99%E7%A8%8B%E6%9D%A5%E4%BA%86%EF%BC%81%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%BC%9AAI%E4%BA%8C%E7%BB%B4%E7%A0%81+%E8%89%BA%E6%9C%AF%E5%AD%97+%E5%85%89%E5%BD%B1%E5%85%89%E6%95%88+%E5%88%9B_0.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/%E2%80%9C%E7%89%9B%E9%80%BC%E2%80%9D%E7%9A%84%E6%95%99%E7%A8%8B%E6%9D%A5%E4%BA%86%EF%BC%81%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%BC%9AAI%E4%BA%8C%E7%BB%B4%E7%A0%81+%E8%89%BA%E6%9C%AF%E5%AD%97+%E5%85%89%E5%BD%B1%E5%85%89%E6%95%88+%E5%88%9B_1.png" alt=""></p><h2 id="光影艺术字">光影艺术字</h2><ol><li>同上</li><li>拖到controlnet中，预处理器为invert(修改为无则字体会表现为阴影)，模型为<a href="https://huggingface.co/ioclab/ioc-controlnet/tree/main/models">brightness</a>,控制权重0.5，介入时机0.1，终止时机0.8<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/%E2%80%9C%E7%89%9B%E9%80%BC%E2%80%9D%E7%9A%84%E6%95%99%E7%A8%8B%E6%9D%A5%E4%BA%86%EF%BC%81%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%BC%9AAI%E4%BA%8C%E7%BB%B4%E7%A0%81+%E8%89%BA%E6%9C%AF%E5%AD%97+%E5%85%89%E5%BD%B1%E5%85%89%E6%95%88+%E5%88%9B_7.png" alt="" title="介入时机对比"></li><li>输入正反提示词，如：</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">best quality,masterpiece,(photorealistic:1.4),1girl,dramatic lighting,full body,indoors,dappled sunlight,sunlight,clothed </span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nsfw,ng_deepnegative_v1_75t,badhandv4,(worst quality:2), (low quality:2), (normal quality:2),lowres,watermark,monochrome </span><br></pre></td></tr></table></figure><ol start="4"><li>使用<a href="https://huggingface.co/ioclab/ioc-controlnet/tree/main/models">illumination</a>模型光影会更自然，权重可以相对提高一些：<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/%E2%80%9C%E7%89%9B%E9%80%BC%E2%80%9D%E7%9A%84%E6%95%99%E7%A8%8B%E6%9D%A5%E4%BA%86%EF%BC%81%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%BC%9AAI%E4%BA%8C%E7%BB%B4%E7%A0%81+%E8%89%BA%E6%9C%AF%E5%AD%97+%E5%85%89%E5%BD%B1%E5%85%89%E6%95%88+%E5%88%9B_8.png" alt="" title="不同权重对比"></li><li>可以使用多个unit，其中openpose控制人物姿势，illumination控制文字光影，可以在ps中调整重叠位置使文字生成在衣服上。</li></ol><h2 id="特殊二维码">特殊二维码</h2><p>可以使用brightness来进行生成，配置如下图所示：<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/%E2%80%9C%E7%89%9B%E9%80%BC%E2%80%9D%E7%9A%84%E6%95%99%E7%A8%8B%E6%9D%A5%E4%BA%86%EF%BC%81%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%BC%9AAI%E4%BA%8C%E7%BB%B4%E7%A0%81+%E8%89%BA%E6%9C%AF%E5%AD%97+%E5%85%89%E5%BD%B1%E5%85%89%E6%95%88+%E5%88%9B_10.png" alt=""><br><a href="https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster/tree/main">qrcode</a>模型是一个专门用于生成二维码的模型，控制权重一般要在1.5以上，分辨率至少为768*768，也可以配合brightness来生成，此时权重需要适当降低</p><p>成果(未完善)：<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/00066-647753063-The%20stunning%20colors%20of%20an%20award%20winning,%20globally%20acclaimed%20RAW%20photo%20titled%20'Enchanted%20Skies',%20the%20photo%20depicts%20A%20mesmerizing.png" alt=""></p>]]></content>
       
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
       
       
         <tags>
@@ -66,15 +86,15 @@
     
     <entry>
       <title>油猴插件推荐</title>
-      <link href="/posts/18243.html"/>
-      <url>/posts/18243.html</url>
+      <link href="/posts/e844018e.html"/>
+      <url>/posts/e844018e.html</url>
       
         <content type="html"><![CDATA[<blockquote><p>油猴是一个多合一的浏览器插件，本文不赘述如何安装tampermonkey插件，只分享一些我认为好用的油猴插件</p></blockquote><h2 id="1-翻译机">1. <a href="https://greasyfork.org/zh-CN/scripts/378277-%E7%BF%BB%E8%AF%91%E6%9C%BA">翻译机</a></h2><p>翻译各类常用社交网站为中文，包含deepl翻译源，支持以下网站：</p><ul><li>twitter</li><li>tweetdeck</li><li>youtube</li><li>facebook</li><li>reddit</li><li>5ch</li><li>discord</li><li>telegram</li></ul><h2 id="2-Bilibili-Evolved">2. <a href="https://github.com/the1812/Bilibili-Evolved">Bilibili-Evolved</a></h2><p>可以下载b站视频和封面，并提供各种ui美化和自定义功能。其实它内置了一个插件市场，里面有很多功能模块可以下载，可拓展性强。</p><h2 id="3-超星-学习通网课小助手">3. <a href="https://greasyfork.org/zh-CN/scripts/437781">超星/学习通网课小助手</a></h2><p>节约无效学习时间</p><h2 id="4-OneJAVOneWeb">4. <a href="https://sleazyfork.org/zh-CN/scripts/428639">OneJAVOneWeb</a></h2><p>老司机必备</p><h2 id="5-知乎增强">5. <a href="https://greasyfork.org/zh-CN/scripts/419081">知乎增强</a></h2><p>主要是两个功能，广告移除和一键收起所有回答。</p><h2 id="6-中国知网CNKI硕博论文PDF下载">6. <a href="https://greasyfork.org/zh-CN/scripts/389343">中国知网CNKI硕博论文PDF下载</a></h2><p>现在好像没什么用了，因为知网已经支持pdf格式下载了。</p><h2 id="7-HTML5视频播放器增强脚本">7. <a href="https://greasyfork.org/zh-CN/scripts/381682">HTML5视频播放器增强脚本</a></h2><p>视频增强脚本，主要用来精确调整倍速，以适应不同视频的节奏，同时也可以加速百书百影的视频播放(16x)。</p><h2 id="8-iTranslator">8. <a href="https://greasyfork.org/zh-CN/scripts/453186">iTranslator</a></h2><p>划词翻译工具，翻译页面可以钉在网页上方。</p><h2 id="9-网页限制解除-改">9. <a href="https://greasyfork.org/zh-CN/scripts/28497">网页限制解除(改)</a></h2><p>这个修改版可以让你解除大部分网站的复制限制。</p><h2 id="10-贴吧全能助手-第三方修改">10. <a href="https://openuserjs.org/scripts/shitianshiwa/%E8%B4%B4%E5%90%A7%E5%85%A8%E8%83%BD%E5%8A%A9%E6%89%8B(%E7%AC%AC%E4%B8%89%E6%96%B9%E4%BF%AE%E6%94%B9)">贴吧全能助手(第三方修改)</a></h2><p>虽然我一般在手机上看贴吧(推荐一下lite版)，但是这个挺好用的。</p><h2 id="11-网盘直链下载助手">11. <a href="https://www.youxiaohou.com/install.html#%F0%9F%93%96-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B">网盘直链下载助手</a></h2><p>用来获取国内常用网盘下载直链，不能加速下载，但是可以绕开客户端。</p><h2 id="12-OneDrive-文件下载直链">12. <a href="https://greasyfork.org/zh-CN/scripts/432415">OneDrive 文件下载直链</a></h2><p>用来获取OneDrive 文件下载直链，支持aria2。</p><h2 id="13-百度网盘千千下载助手">13. <a href="https://greasyfork.org/zh-CN/scripts/463171">百度网盘千千下载助手</a></h2><p>百度网盘下载，但是不稳定，且用且珍惜。</p><h2 id="14-Picviewer-CE">14. <a href="https://greasyfork.org/zh-CN/scripts/24204">Picviewer CE+</a></h2><p>在线看图工具，支持图片翻转、旋转、缩放、弹出大图、批量保存。</p>]]></content>
       
       
       <categories>
           
-          <category> 文章 </category>
+          <category> 好物推荐 </category>
           
       </categories>
       
@@ -92,158 +112,23 @@
     
     
     <entry>
-      <title>hexo优化小寄巧</title>
-      <link href="/posts/7050.html"/>
-      <url>/posts/7050.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="获取网站logo">获取网站logo</h2><blockquote><p>直接访问这个网址下载图标，格式为 <code>域名/favicon.ico</code></p></blockquote><h2 id="修改主题颜色">修改主题颜色</h2><blockquote><p>在主题文件的 <code>/source/css/matery.css</code> 文件中，搜索 <code>.bg-color</code> 来修改背景颜色：</p></blockquote><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 整体背景颜色，包括导航、移动端的导航、页尾、标签页等的背景颜色. */</span></span><br><span class="line"><span class="selector-class">.bg-color</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">linear-gradient</span>(to right, <span class="number">#4cbf30</span> <span class="number">0%</span>, <span class="number">#0f9d58</span> <span class="number">100%</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@-webkit-keyframes</span> rainbow &#123;</span><br><span class="line">   <span class="comment">/* 动态切换背景颜色. */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@keyframes</span> rainbow &#123;</span><br><span class="line">    <span class="comment">/* 动态切换背景颜色. */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="网站鼠标写法">网站鼠标写法</h2><blockquote><p>在主题的css文件夹中新建mouse.css，其中写入：</p></blockquote><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur</span>),</span><br><span class="line">        default;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">a</span>,</span><br><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur</span>),</span><br><span class="line">        default;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>在头文件(head.ejs)中引入<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/mouse.css&quot;&gt;</code></p></blockquote><h2 id="html语言显示">html语言显示</h2><blockquote><p>在你的 md 文章页中，部分内容不想经过 Hexo 渲染，则包一层 raw 标签：</p></blockquote><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span>&gt;</span>你的一些代码...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span>你的一些代码...<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span></span><br></pre></td></tr></table></figure><p>例如：</p><div class="">你的一些代码...</div><script>你的一些代码...</script><p>那么标签内的代码就不会被框架渲染了~</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 文章 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> hexo </tag>
-            
-            <tag> matery-pro </tag>
-            
-            <tag> 美化 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>域名邮箱创建</title>
-      <link href="/posts/29867.html"/>
-      <url>/posts/29867.html</url>
-      
-        <content type="html"><![CDATA[<blockquote><p>本教程默认使用cloudflare进行CDN加速服务，在此基础上使用它的电子邮箱路由服务</p></blockquote><h2 id="1-配置邮箱转发">1. 配置邮箱转发</h2><p>进入cloudflare点击右侧的<code>电子邮件</code>, 随便输入一个你想要的域名前缀, 如<code>admin</code>, 在目标地址这里填写一个你常用的邮件地址, 点击<code>保存并继续</code></p><p><img src="https://gitee.com/rbq000/imgs/raw/master/img/1.jpg" alt=""></p><p>这里会提示你需要验证你的邮箱, 请前往你的邮箱进行验证<br>在下个页面中, 会要求你添加记录, 直接点击<code>添加记录</code>即可<br>看到状态栏打钩为活动状态时，就说明添加成功了<br>到这一步，发送到你自定义邮箱的邮件，就会转发到你的常用邮箱。你可以添加多个自定义邮箱，使他们指向不同的目标地址，这样就能实现邮件的分类。当你注册一些网站时可以在这里创建一个自定义邮箱，指向你的主邮箱，如果你不希望接收这个网站的邮件，那么就直接在这里取消活动状态即可</p><h2 id="2-配置-Gmail-代发">2. 配置 Gmail 代发</h2><blockquote><p>因为我在目标位置栏里填写的是谷歌邮箱，所以这里要到谷歌邮箱里进行配置，如果你使用的是qq邮箱，那就到对应位置配置即可</p></blockquote><p>在<a href="https://myaccount.google.com/apppasswords">这里</a>生成一个应用密码, 应用选择<code>邮箱</code>, 设备选择<code>其他</code>, 然后点击<code>生成</code></p><p><img src="https://cdn.img.fishze.com/i/2022/12/03/638b6cd7c752f.png" alt=""></p><p>复制下来生成的密码, 并保存好。<br>打开<code>Gmail</code>, 点击右上角的设置 -&gt; 查看所有设置 -&gt; 账号和导入, 在<code>用这个地址发送邮件</code>中, 点击<code>添加其他电子邮件地址</code>。</p><p><img src="https://cdn.img.fishze.com/i/2022/12/03/638b6d8eb09a2.png" alt=""></p><p>在跳出的页面中, <code>名称</code>写你的个人标识（会显示在邮件接收方那里）, 邮件地址填写刚刚创建的自定义地址</p><p><img src="https://cdn.img.fishze.com/i/2022/12/03/638b6e3492a96.png" alt=""></p><p><code>SMTP</code>服务器填写<code>smtp.gmail.com</code>, 端口填写<code>587</code>, <code>用户名</code>填写你的<code>Gmail</code>账号(不要携带<code>@gmail.com</code>), <code>密码</code>填写你刚刚生成的应用密码</p><p><img src="https://cdn.img.fishze.com/i/2022/12/03/638b6ece8e861.png" alt=""></p><p>点击<code>添加账号</code>, 此时你会收到一封电子邮件, 请点击验证链接或输入验证码<br><code>Gmail</code>代发就配置完毕了, 可以尝试发一封邮件来测试一下</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 教程 </tag>
-            
-            <tag> 邮箱 </tag>
-            
-            <tag> cloudflare </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Onedrive文件夹删除</title>
-      <link href="/posts/26851.html"/>
-      <url>/posts/26851.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="一、取消-OneDrive-账户与电脑的链接">一、取消 OneDrive 账户与电脑的链接</h2><ol><li>点击桌面左下角要取消链接的 OneDrive 图标。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/v2-2e7880ddb820893af6bdf7364faf377b_r.jpg" alt=""></li><li>点击“帮助&amp;设置”，在弹出的菜单点击“设置”，进入设置页面。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/1.png" alt=""></li></ol><p><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/3.png" alt=""><br>3. 点击“取消链接此电脑”。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/4.png" alt=""><br>4. 在弹出的提示框中再次确定即可取消 OneDrive 与电脑的链接。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/5.png" alt=""></p><h2 id="二、在注册表编辑器中寻找并修改此-OneDrive-账户对应的注册表信息">二、在注册表编辑器中寻找并修改此 OneDrive 账户对应的注册表信息</h2><ol><li>按住键盘上的“Windows”+“R”，弹出“运行”窗口。在输入框中输入“<strong>regedit</strong>&quot;，点击“确定”，进入注册表编辑器。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/6.jpg" alt=""></li><li>在注册表编辑器左侧，找到“<strong>计算机\HKEY_CLASSES_ROOT\CLSID</strong>”（也可以直接复制引号中的地址，将注册表编辑器上方地址栏清空后粘贴过去，再点击回车）。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/7.jpg" alt=""></li><li>按住键盘上的“Ctrl”+“F”，在弹出页面的搜索框中输入要删除的 OneDrive 文件夹名，注意不要少打空格。如下图所示。<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/8.webp" alt=""></li></ol><blockquote><p>比如要删除这个文件夹<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/9.jpg" alt=""><br>就要输入 “OneDrive - 徐州开放大学”<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/10.jpg" alt=""><br>然后点击“查找下一个”</p></blockquote><ol start="4"><li>将查找到的 OneDrive 账户注册表信息的第三项的数值修改为“0”<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/11.jpg" alt=""></li></ol><blockquote><p>双击这一项<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/14.jpg" alt=""><br>将此处修改为“0”<br><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/12.jpg" alt=""><br>最后点击“确定”</p></blockquote><h2 id="三、回到文件资源管理器，发现左侧目标-OneDrive-文件夹已消失。重启电脑即可。">三、回到文件资源管理器，发现左侧目标 OneDrive 文件夹已消失。重启电脑即可。</h2><p><img src="https://cdn.jsdelivr.net/gh/bilibiliworld/picgo/13.webp" alt=""></p><hr><p>参考教程<a href="https://zhuanlan.zhihu.com/p/179299395">如何删除文件资源管理器左侧的 OneDrive 文件夹</a>，这边只是转载了他的方法</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 文章 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Onedrive </tag>
-            
-            <tag> 注册表 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hexo下安装live2d插件</title>
-      <link href="/posts/10824.html"/>
-      <url>/posts/10824.html</url>
-      
-        <content type="html"><![CDATA[<p>先cd到hexo主题的source文件夹下，执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add https://github.com/stevenjoezhang/live2d-widget.git live2d-widget</span><br></pre></td></tr></table></figure><p>找到/主题/source/live2d-widget/autoload.js 并打开 autoload.js</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#注释或删除下面代码</span><br><span class="line"><span class="keyword">const</span> live2d_path = <span class="string">&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/&quot;</span>;</span><br><span class="line">#解开下面代码</span><br><span class="line"><span class="keyword">const</span> live2d_path = <span class="string">&quot;/live2d-widget/&quot;</span>;</span><br></pre></td></tr></table></figure><p>在/主题/layout/layout.ejs文件（后缀可能不同）里，找到head标签（没有就加在body标签的前面），添加下面代码</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://npm.elemecdn.com/font-awesome/css/font-awesome.min.css<span class="string">&quot;/ media=&quot;</span>defer<span class="string">&quot; onload=&quot;</span>this.media=<span class="string">&#x27;all&#x27;</span><span class="string">&quot;&gt;</span></span><br></pre></td></tr></table></figure><p>在body 标签中间添加下面代码</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script defer <span class="attribute">src</span>=&quot;/live2d-widget/autoload<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure><p>保存后重新启动就可以了</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>记得上传github前要先<code>git submodule update --init --recursive</code>，详情可以参考<a href="/posts/39758.html" title="问题检索简易指南">github添加子模块</a></p><p>另外可以尝试更换cdnpath，因为jsdelivr不支持50MB以上的包的加速，可能报403错误，所以更换为vercel的CDN服务。<br>找到/主题/source/live2d-widget/autoload.js，修改下面代码</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cdnPath</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/&quot;</span></span><br></pre></td></tr></table></figure><p>改成</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cdnPath</span>: <span class="string">&quot;https://npm.elemecdn.com/akilar-live2dapi@latest/&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 文章 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> matery-pro </tag>
-            
-            <tag> Hexo </tag>
-            
-            <tag> live2d </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>问题检索简易指南</title>
-      <link href="/posts/39758.html"/>
-      <url>/posts/39758.html</url>
+      <link href="/posts/55ab0e1c.html"/>
+      <url>/posts/55ab0e1c.html</url>
       
         <content type="html"><![CDATA[<h2 id="前言">-前言</h2><blockquote><p>由于今天遇到了一个简单的问题，但是代码输入错误，导致一个问题嵌套另一个问题，折腾了半天才解决，故想写篇博文好好盘一盘我是如何通过搜索来解决问题的；并且把遇到的问题记录在这里，方便下次查阅。</p></blockquote><h2 id="1-方法一">1. 方法一</h2><p>直接谷歌或百度，通常会搜到<a href="https://www.csdn.net/">CSDN</a>的回答，或者<a href="https://www.zhihu.com/">知乎</a>的回答，准确率较高。视频类教程可以去<a href="https://www.bilibili.com/">B站</a>或者<a href="https://www.youtube.com/">油管</a>搜。</p><h2 id="2-方法二">2. 方法二</h2><p>到github项目的issues里，翻以往的提问，或者直接新建问题，例如：<a href="https://github.com/blinkfox/hexo-theme-matery/issues">Issues</a>。</p><h2 id="3-方法三">3. 方法三</h2><p>到官方帮助文档里去查阅相关信息，或者是项目的readme文档。例如：<a href="https://hexo.io/zh-cn/docs/">Hexo帮助文档</a>, <a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">Readme</a>。</p><h2 id="4-方法四">4. 方法四</h2><p>询问万能的<a href="https://chat.openai.com/">ChatGPT</a>，但是因为VPN不稳定所以时常访问不了，而且它给的答案也不一定准确。</p><h2 id="5-方法五">5. 方法五</h2><p>加群问大佬，一般是个人粉丝群，或者技术交流群，遇到脾气好有耐心的大佬还可以交个朋友（虽然我是社恐QaQ）。</p><h2 id="问题记录">-问题记录</h2><h3 id="Github本地创建仓库命令">Github本地创建仓库命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;项目名称&quot;</span></span><br><span class="line">git branch -M main</span><br><span class="line">git remote add origin <span class="string">&quot;仓库地址&quot;</span></span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure><h3 id="Github更新仓库命令">Github更新仓库命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add * -f</span><br><span class="line">git commit -m <span class="string">&quot;更新内容&quot;</span></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure><h3 id="Github添加子模块">Github添加子模块</h3><blockquote><p>这是解决<code>git clone</code>后上传的错误，如果不需要实时更新的话其实可以把克隆项目的.git文件夹和.gitignore文件直接删了然后上传。</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git submodule add <span class="string">&quot;子模块仓库地址&quot;</span></span><br><span class="line"><span class="comment">#值得注意的是，如果将这种存储库`push`到云端，然后再`pull`或者`clone`回来，那么会发现`aoi_info`子模块内容为空，这是因为`repoA`下嵌入了一个`repoB`，所以需要执行`git submodule update --init --recursive`把子仓库内容拉过来。</span></span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure><h3 id="Windows命令行光标消失">Windows命令行光标消失</h3><blockquote><p>切换中文输入法随便打几个字，再切换回英文就行。</p></blockquote>]]></content>
       
       
       <categories>
           
-          <category> 文章 </category>
+          <category> 教程 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 教程 </tag>
-            
-            <tag> 方法论 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/posts/16107.html"/>
-      <url>/posts/16107.html</url>
-      
-        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="6d382462177b9dbaf1430ac7391c0807c2f982869c795f99c737be589fb8b17f">98c5eac1e431cec725e9b50c1f9552a76029d294b7a2e1bad6adc0d3faff8f23fa9ca3ce6677a4bf251fa26148ea2bf85101bb5a610569aeab8a396c90bd6569eb5e935f44b67f7c67fa20d06634ce1b1c8382ff59a59384ff187e70a8695fb964c46ca7257b3cc220f6159b84344e3bc618874e6b044a8a3bcc8374c9a0d2f2ee91a9c2626f6e971511c576469fd6c872a94862eeee121e142be20dbd069223baa787e572f3b88e4a78a0ef11464a137fbce3519910ca2c07d65d169bc1c31d340b3ca7cbe6d4feb13895c25d99b143431c0249058d7840d25a8acefe7564211a5075ee07f3d3c60e302622e5ded5cd6eceec5638377cc412dae8143d83eabdcf90f70fff0dd4d564362a3c1a633408ff77d18b67a64d6c5c8a750541a23b74b98b7811f4a764e89627b8671a48fcb5498f98ffbacd853aba850ac254dbf333d639723558036cc3fa0afff35b4add25df2679d558ec267a4955ca47815b635aa75efe76677ac20b0393a3faba8b4f8b52b390668fdb93a537ff4fae9e2207dc1530ed520f05ba5344b97858926ec2b495f2d1d6c40916b33e7a173aaa317ade34b80fc6201772790b0dbc62a63555733aa7a869ca3e13940a97ec0ab7c1d4146ca6834de5a0769171aecdabdee1e3e6cc4045aa9ea90102faeadd4f38c3e7e2278dc3db03c1c9e46c9e6be34bc6f3f754aab51ec91a75ac978809379cf31f931eb5b22f1796bf02c2098ef19b32e726b0995b150016e47ae0ec16c3b5b9b5fdb6c7be42cee1e23cace36cdee3b86d87df92a4be50b2689a275989648b3fb6227413c8fcdcaeebf859eb51b0ef6ea0bdb3cbf1ca60af937a9b6408518b7750c277f1608e270e01a7e60b5038c4640eb6ece8f2d258dafe80cbba6ee492f314bbda46dd1834eee444b635b150435c45d7746a04141ef28a3d3b0cddaf72455cea3fe47b7a56348d66bb5e685301adc93fea40453fbaea7ccaa2a5be3a51015625bc376ac3fd2d2ba7fb7febe3bdd5f1e916bba24b87bebc8d8cccb95b7fd8c72795e1da68e22eb9193a9c0708b32c53b6553f80908824d5283ec3702618c76c74b522fc7b75efea5549dc2f6eac60b5f5c82ea5c69b3368d21028d41908142c23e6c85ce9dc4407b76becb3108942404db2830f17ff1ee7f80b5d0dd3940f7b2704358e7b89e99594077898f851d1ce584a49c64d2b0a3980055726e2acee21d406285ca825afff38dd61262117c4c1a8b4d4effd0f81a2f13898bf9b135e39dac3d3759842f86db32d16e997f16586ae4046ae8be0b796a20142187086c7cfa298dcae796ac3c73eff9ffa1d802238f42bae945bb415e5c20cc9108608e1d5f96f8a3cc7febdcb2d9f27f8e88353705506bcaff67250f58a578d420111ce52d2dfed3f0b7903e333ac00307804463caeffc538a23ab1ed4560c4ba7a2fcde70182e3f6df1193346e6d53b43b62536f02dd10f300a3d338c1f950bc62aa37538a6ea38f2b2396233d297c3422501d36929debf35ade16eae2405d733570ec5c8ed6717a67e11240e00609b91dd2093134ca2ba0b5e659812af34c5187002780c5e29870fe22ebb9c2b923bffb8f510e876f6b1403db256ed660196c16d87b206ccef4a1daad24d1dece72e7df85ab97874cc5649b5e214a506f9f821a991b045da42e0b1de1f0b4d8bcb3912a130b78084fb8178beea6210badc5ae5d3ca460b16384ab51068630db3b9db2a7a2f55e77144c02cf71c21b105ea6ecb5691b76f93082b6d057e40f58d7ccd1ba80e4c0245a85cc3d16b47822135385c9386d332d9e2a153f9a5793420382cbc03cd3740fe0c78a9b404e3706143003f9ec947c31127cc615382011cb4e0dc9b745daed8a6fb41566f7b07980b4150f3d7a667badc6b77f28fc058b2cea1a57a2c68a138c1a5895ca2ba5f5d69bcd25994c9bb1d6e2306e44addf238e7f771104cce0621d7a650f23066cfa92fd4556f973ba4e4e25cfb5d364854afa5ebc035840d56e9a8f235fe14a97a91df2eca3a41f6962a8660e7c1ba5243a1edc6ed88c199df77dc3e390b088344b18ac970aaa861f60ab86532dcbbdc099484a9f3c8b43246c438173c872f9322abd384f292727e004ecf24c68925195b548e9a17e4b057f41c0da41221888047a1a9755330f40f5b7921ff3a142a6a0f6c1a43e2fad965be758eced544b37740535679db5427ea4dfe916213c610122c2b454df0e17211e76c8c22a3fec33e9b65e7363d893fd95efa6a23358477a015d2922d39caf914ddbca3f1cbbc20fc08355678741c7d493c3939c1731f7c383598306c198e465b4c039104e92564f395c7b84656d0ef8eded1216561cc26bf2f9957c2279207ce02553f07f7cb6a9ba613a2314459d0c20b9cb2bc3d68704107bbb130bb4b98c25bbaee48b994c1a824ea1cea6def750fdefd69f932f1e4d7d645ae46c295d6e6ad9cb6065fe049c2feebef7553adf220cbb536b7374f347d1d2c3bfb428cda953c99fe007b5ed34e85448b719809567e6573215eba3d1f22ef77dbb822f5ca3dd17fc0b637f67629c103b75cebe27e8a51185833f21d489ca7bb883dca03678231f8204478f307597d563c8d64e959935a7a4</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      
-      
-      <categories>
-          
-          <category> 文章 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Helps </tag>
+            <tag> Bug </tag>
             
         </tags>
       
@@ -261,7 +146,7 @@
       
       <categories>
           
-          <category> 演示 </category>
+          <category> 教程 </category>
           
       </categories>
       
