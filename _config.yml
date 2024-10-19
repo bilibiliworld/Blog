@@ -6,7 +6,7 @@
 title: 萌王之乡
 subtitle: 
 description: '（罪已昭）我不是萝莉控'
-keywords: '博客,Butterfly,Hexo,Loliking'
+keywords: '萌王之乡,博客,Butterfly,Hexo'
 author: 天台硝烟让坏女人哭泣
 language: zh-CN
 timezone: ''
@@ -34,7 +34,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 # 指定不渲染某些页面
-skip_render: _posts/robots.txt
+skip_render: js/cat.js
 
 # Writing
 new_post_name: :year-:month-:day-:title.md # File name of new posts
@@ -123,7 +123,7 @@ theme: butterfly
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   - type: git
-    repository:  k@8.223.47.89:/home/git/blog.git # 这里写上你的Github地址
+    repository:  root@8.223.47.89:/home/git/blog.git # 这里写上你的Github地址
     branch: master
   # - type: baidu_url_submitter
   # - type: git
@@ -189,10 +189,8 @@ feed:
   enable: true
   type:
     - atom
-    - rss2
   path:
     - atom.xml
-    - rss2.xml
   limit: 20
 
 
@@ -216,7 +214,18 @@ baidu_url_submit:
 nofollow:
   enable: true
   field: site
-  exclude: ''
+  exclude: 
+    - 'https://immmmm.com/'
+    - 'https://meuicat.com/'
+    - 'https://www.fomal.cc/'
+    - 'https://blog.anheyu.com/'
+    - 'https://akilar.top/'
+    - 'https://blog.liushen.fun/'
+    - 'https://vluv.space/'
+    - 'https://blog.leonus.cn/'
+    - 'https://tianli-blog.club/'
+    - 'https://www.52txr.cn'
+    - 'https://poetize.cn'
 
 
 # github提交日志
@@ -270,44 +279,6 @@ gitcalendar:
 plugins:
   - hexo-algoliasearch
 
-# 小冰分类磁贴
-magnet:
-  enable: true
-  priority: 2
-  enable_page: /
-  type: categories
-  devide: 3
-  display:
-    - name: 教程
-      display_name: 萌王の学习笔记
-      icon: 📚
-    - name: 好物推荐
-      display_name: 萌王の百宝袋
-      icon: 💎
-    - name: 科普
-      display_name: 萌王の小课堂
-      icon: 🍼
-    # - name: Java基础
-    #   display_name: 小FのJava基础笔记
-    #   icon: 🍟
-    # - name: 数据库
-    #   display_name: 小Fの数据库笔记
-    #   icon: 🍨
-    # - name: 演示
-    #   display_name: 小Fの案例演示笔记
-    #   icon: 🍥
-  color_setting:
-    text_color: black # 文字默认颜色
-    text_hover_color: white # 文字鼠标悬浮颜色
-    background_color: "#e9e9e9" # 文字背景默认颜色
-    background_hover_color: var(--text-bg-hover) # 文字背景悬浮颜色
-  layout:
-    type: id
-    name: recent-posts
-    index: 0
-  temple_html: '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet">${temple_html_item}</div></div>'
-  plus_style: ""
-
 bangumi: # 追番设置
   enable: true
   source: bgmv0
@@ -333,31 +304,31 @@ bangumi: # 追番设置
   proxy:
     host: '代理host'
     port: '代理端口'
-  extra_options:
-    key: value
+  extra_options: 
+    aside: false
   coverMirror: 
-game: # 游戏设置，仅支持source: bgmv0
-  enable: true
-  path: games/index.html
-  source: bgmv0
-  vmid: 577489
-  title: '游戏列表'
-  quote: '第九艺术❌好玩万岁✅'
-  show: 2
-  lazyload: false
-  srcValue: '__image__'
-  lazyloadAttrName: 'data-src=__image__'
-  loading: '/assets/loading3.gif'
-  metaColor:
-  color:
-  webp:
-  progress:
-  progressBar:
-  extraOrder:
-  order:
-  extra_options:
-    key: value
-  coverMirror:
+# game: # 游戏设置，仅支持source: bgmv0
+#   enable: true
+#   path: games/index.html
+#   source: bgmv0
+#   vmid: 577489
+#   title: '游戏列表'
+#   quote: '第九艺术❌好玩万岁✅'
+#   show: 2
+#   lazyload: false
+#   srcValue: '__image__'
+#   lazyloadAttrName: 'data-src=__image__'
+#   loading: '/assets/loading3.gif'
+#   metaColor:
+#   color:
+#   webp:
+#   progress:
+#   progressBar:
+#   extraOrder:
+#   order:
+#   extra_options:
+#     aside: false
+#   coverMirror:
 
 douban:
   id: 273706158
@@ -376,6 +347,7 @@ douban:
       - do
       - wish
     option:
+      aside: false
   movie:
     path: movies/index.html
     title: "电影列表"
@@ -385,3 +357,21 @@ douban:
       - do
       - wish
     option:
+      aside: false
+
+steam:
+  enable: true
+  steamId: '76561199188755293' #steam 64位Id
+  apiKey:  '82A24700552D903BF15A058E29BCE64B' #steam api key
+  freeGames: true
+  path:
+  title: Steam游戏库
+  quote: '+1+1+1+1+1'
+  tab: recent
+  length: 1000
+  # imgUrl: '*****'
+  proxy:
+    host: 127.0.0.1
+    port: 7890
+  extra_options:
+    aside: false

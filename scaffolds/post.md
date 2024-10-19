@@ -6,5 +6,4 @@ tags:
   - 
 categories: 
   - 
-mathjax: true
 ---

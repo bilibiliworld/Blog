@@ -63,241 +63,6 @@ function scrollToTop() {
   btf.scrollToDest(0, 500);
 }
 
-/* 导航栏显示标题 end */
-
-//----------------------------------------------------------------
-
-/* 欢迎信息 start */
-//get请求
-// $.ajax({
-//   type: 'get',
-//   url: 'https://apis.map.qq.com/ws/location/v1/ip',
-//   data: {
-//     key: 'FSBBZ-BK4CU-QTGVL-GEWBH-5T64Q-YOBMS',  // 这里要写你的KEY!!!
-//     output: 'jsonp',
-//   },
-//   dataType: 'jsonp',
-//   success: function (res) {
-//     ipLoacation = res;
-//   }
-// })
-// function getDistance(e1, n1, e2, n2) {
-//   const R = 6371
-//   const { sin, cos, asin, PI, hypot } = Math
-//   let getPoint = (e, n) => {
-//     e *= PI / 180
-//     n *= PI / 180
-//     return { x: cos(n) * cos(e), y: cos(n) * sin(e), z: sin(n) }
-//   }
-
-//   let a = getPoint(e1, n1)
-//   let b = getPoint(e2, n2)
-//   let c = hypot(a.x - b.x, a.y - b.y, a.z - b.z)
-//   let r = asin(c / 2) * 2 * R
-//   return Math.round(r);
-// }
-
-// function showWelcome() {
-
-//   let dist = getDistance(113.34499552, 23.15537143, ipLoacation.result.location.lng, ipLoacation.result.location.lat); //这里换成自己的经纬度
-//   let pos = ipLoacation.result.ad_info.nation;
-//   let ip;
-//   let posdesc;
-//   //根据国家、省份、城市信息自定义欢迎语
-//   switch (ipLoacation.result.ad_info.nation) {
-//     case "日本":
-//       posdesc = "よろしく，一起去看樱花吗";
-//       break;
-//     case "美国":
-//       posdesc = "Let us live in peace!";
-//       break;
-//     case "英国":
-//       posdesc = "想同你一起夜乘伦敦眼";
-//       break;
-//     case "俄罗斯":
-//       posdesc = "干了这瓶伏特加！";
-//       break;
-//     case "法国":
-//       posdesc = "C'est La Vie";
-//       break;
-//     case "德国":
-//       posdesc = "Die Zeit verging im Fluge.";
-//       break;
-//     case "澳大利亚":
-//       posdesc = "一起去大堡礁吧！";
-//       break;
-//     case "加拿大":
-//       posdesc = "拾起一片枫叶赠予你";
-//       break;
-//     case "中国":
-//       pos = ipLoacation.result.ad_info.province + " " + ipLoacation.result.ad_info.city + " " + ipLoacation.result.ad_info.district;
-//       ip = ipLoacation.result.ip;
-//       switch (ipLoacation.result.ad_info.province) {
-//         case "北京市":
-//           posdesc = "北——京——欢迎你~~~";
-//           break;
-//         case "天津市":
-//           posdesc = "讲段相声吧。";
-//           break;
-//         case "河北省":
-//           posdesc = "山势巍巍成壁垒，天下雄关。铁马金戈由此向，无限江山。";
-//           break;
-//         case "山西省":
-//           posdesc = "展开坐具长三尺，已占山河五百余。";
-//           break;
-//         case "内蒙古自治区":
-//           posdesc = "天苍苍，野茫茫，风吹草低见牛羊。";
-//           break;
-//         case "辽宁省":
-//           posdesc = "我想吃烤鸡架！";
-//           break;
-//         case "吉林省":
-//           posdesc = "状元阁就是东北烧烤之王。";
-//           break;
-//         case "黑龙江省":
-//           posdesc = "很喜欢哈尔滨大剧院。";
-//           break;
-//         case "上海市":
-//           posdesc = "众所周知，中国只有两个城市。";
-//           break;
-//         case "江苏省":
-//           switch (ipLoacation.result.ad_info.city) {
-//             case "南京市":
-//               posdesc = "这是我挺想去的城市啦。";
-//               break;
-//             case "苏州市":
-//               posdesc = "上有天堂，下有苏杭。";
-//               break;
-//             default:
-//               posdesc = "散装是必须要散装的。";
-//               break;
-//           }
-//           break;
-//         case "浙江省":
-//           posdesc = "东风渐绿西湖柳，雁已还人未南归。";
-//           break;
-//         case "河南省":
-//           switch (ipLoacation.result.ad_info.city) {
-//             case "郑州市":
-//               posdesc = "豫州之域，天地之中。";
-//               break;
-//             case "南阳市":
-//               posdesc = "臣本布衣，躬耕于南阳。此南阳非彼南阳！";
-//               break;
-//             case "驻马店市":
-//               posdesc = "峰峰有奇石，石石挟仙气。嵖岈山的花很美哦！";
-//               break;
-//             case "开封市":
-//               posdesc = "刚正不阿包青天。";
-//               break;
-//             case "洛阳市":
-//               posdesc = "洛阳牡丹甲天下。";
-//               break;
-//             default:
-//               posdesc = "可否带我品尝河南烩面啦？";
-//               break;
-//           }
-//           break;
-//         case "安徽省":
-//           posdesc = "蚌埠住了，芜湖起飞。";
-//           break;
-//         case "福建省":
-//           posdesc = "井邑白云间，岩城远带山。";
-//           break;
-//         case "江西省":
-//           posdesc = "落霞与孤鹜齐飞，秋水共长天一色。";
-//           break;
-//         case "山东省":
-//           posdesc = "遥望齐州九点烟，一泓海水杯中泻。";
-//           break;
-//         case "湖北省":
-//           posdesc = "来碗热干面！";
-//           break;
-//         case "湖南省":
-//           posdesc = "74751，长沙斯塔克。";
-//           break;
-//         case "广东省":
-//           posdesc = "老板来两斤福建人。";
-//           break;
-//         case "广西壮族自治区":
-//           posdesc = "桂林山水甲天下。";
-//           break;
-//         case "海南省":
-//           posdesc = "朝观日出逐白浪，夕看云起收霞光。";
-//           break;
-//         case "四川省":
-//           posdesc = "康康川妹子。";
-//           break;
-//         case "贵州省":
-//           posdesc = "茅台，学生，再塞200。";
-//           break;
-//         case "云南省":
-//           posdesc = "玉龙飞舞云缠绕，万仞冰川直耸天。";
-//           break;
-//         case "西藏自治区":
-//           posdesc = "躺在茫茫草原上，仰望蓝天。";
-//           break;
-//         case "陕西省":
-//           posdesc = "来份臊子面加馍。";
-//           break;
-//         case "甘肃省":
-//           posdesc = "羌笛何须怨杨柳，春风不度玉门关。";
-//           break;
-//         case "青海省":
-//           posdesc = "牛肉干和老酸奶都好好吃。";
-//           break;
-//         case "宁夏回族自治区":
-//           posdesc = "大漠孤烟直，长河落日圆。";
-//           break;
-//         case "新疆维吾尔自治区":
-//           posdesc = "驼铃古道丝绸路，胡马犹闻唐汉风。";
-//           break;
-//         case "台湾省":
-//           posdesc = "我在这头，大陆在那头。";
-//           break;
-//         case "香港特别行政区":
-//           posdesc = "永定贼有残留地鬼嚎，迎击光非岁玉。";
-//           break;
-//         case "澳门特别行政区":
-//           posdesc = "性感荷官，在线发牌。";
-//           break;
-//         default:
-//           posdesc = "带我去你的城市逛逛吧！";
-//           break;
-//       }
-//       break;
-//     default:
-//       posdesc = "带我去你的国家逛逛吧。";
-//       break;
-//   }
-
-//   //根据本地时间切换欢迎语
-//   let timeChange;
-//   let date = new Date();
-//   if (date.getHours() >= 5 && date.getHours() < 11) timeChange = "<span>上午好</span>，一日之计在于晨！";
-//   else if (date.getHours() >= 11 && date.getHours() < 13) timeChange = "<span>中午好</span>，该摸鱼吃午饭了。";
-//   else if (date.getHours() >= 13 && date.getHours() < 15) timeChange = "<span>下午好</span>，懒懒地睡个午觉吧！";
-//   else if (date.getHours() >= 15 && date.getHours() < 16) timeChange = "<span>三点几啦</span>，一起饮茶呀！";
-//   else if (date.getHours() >= 16 && date.getHours() < 19) timeChange = "<span>夕阳无限好！</span>";
-//   else if (date.getHours() >= 19 && date.getHours() < 24) timeChange = "<span>晚上好</span>，夜生活嗨起来！";
-//   else timeChange = "夜深了，早点休息，少熬夜。";
-
-//   try {
-//     //自定义文本和需要放的位置
-//     document.getElementById("welcome-info").innerHTML =
-//       `<b><center>🎉 欢迎信息 🎉</center>&emsp;&emsp;欢迎来自 <span style="color:var(--theme-color)">${pos}</span> 的小伙伴，${timeChange}您现在距离站长约 <span style="color:var(--theme-color)">${dist}</span> 公里，当前的IP地址为： <span style="color:var(--theme-color)">${ip}</span>， ${posdesc}</b>`;
-//   } catch (err) {
-//     // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
-//   }
-// }
-// window.onload = showWelcome;
-// // 如果使用了pjax在加上下面这行代码
-// document.addEventListener('pjax:complete', showWelcome);
-
-/* 欢迎信息 end */
-
-//----------------------------------------------------------------
-
 /* 微博热搜 start */
 document.addEventListener('pjax:complete', getWeibo);
 document.addEventListener('DOMContentLoaded', getWeibo);
@@ -330,8 +95,6 @@ function getWeibo() {
 }
 
 /* 微博热搜 end */
-
-//----------------------------------------------------------------
 
 /* 禁用f12与按键防抖 start */
 // 防抖全局计时器
@@ -636,160 +399,6 @@ function randomPost() {
 }
 /* 随便逛逛 end */
 
-//----------------------------------------------------------------
-
-/* 小猫咪 start */
-// if (document.body.clientWidth > 992) {
-//   function getBasicInfo() {
-//     /* 窗口高度 */
-//     var ViewH = $(window).height();
-//     /* document高度 */
-//     var DocH = $("body")[0].scrollHeight;
-//     /* 滚动的高度 */
-//     var ScrollTop = $(window).scrollTop();
-//     /* 可滚动的高度 */
-//     var S_V = DocH - ViewH;
-//     var Band_H = ScrollTop / (DocH - ViewH) * 100;
-//     return {
-//       ViewH: ViewH,
-//       DocH: DocH,
-//       ScrollTop: ScrollTop,
-//       Band_H: Band_H,
-//       S_V: S_V
-//     }
-//   };
-//   function show(basicInfo) {
-//     if (basicInfo.ScrollTop > 0.001) {
-//       $(".neko").css('display', 'block');
-//     } else {
-//       $(".neko").css('display', 'none');
-//     }
-//   }
-//   (function ($) {
-//     $.fn.nekoScroll = function (option) {
-//       var defaultSetting = {
-//         top: '0',
-//         scroWidth: 6 + 'px',
-//         z_index: 9999,
-//         zoom: 0.9,
-//         borderRadius: 5 + 'px',
-//         right: 55.6 + 'px',
-//         nekoImg: "https://bu.dusays.com/2022/07/20/62d812db74be9.png",
-//         hoverMsg: "春天啦~",
-//         color: "var(--theme-color)",
-//         during: 500,
-//         blog_body: "body",
-//       };
-//       var setting = $.extend(defaultSetting, option);
-//       var getThis = this.prop("className") !== "" ? "." + this.prop("className") : this.prop("id") !== "" ? "#" +
-//         this.prop("id") : this.prop("nodeName");
-//       if ($(".neko").length == 0) {
-//         this.after("<div class=\"neko\" id=" + setting.nekoname + " data-msg=\"" + setting.hoverMsg + "\"></div>");
-//       }
-//       let basicInfo = getBasicInfo();
-//       $(getThis)
-//         .css({
-//           'position': 'fixed',
-//           'width': setting.scroWidth,
-//           'top': setting.top,
-//           'height': basicInfo.Band_H * setting.zoom * basicInfo.ViewH * 0.01 + 'px',
-//           'z-index': setting.z_index,
-//           'background-color': setting.bgcolor,
-//           "border-radius": setting.borderRadius,
-//           'right': setting.right,
-//           'background-image': 'url(' + setting.scImg + ')',
-//           'background-image': '-webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent)', 'border-radius': '2em',
-//           'background-size': 'contain'
-//         });
-//       $("#" + setting.nekoname)
-//         .css({
-//           'position': 'fixed',
-//           'top': basicInfo.Band_H * setting.zoom * basicInfo.ViewH * 0.01 - 50 + 'px',
-//           'z-index': setting.z_index * 10,
-//           'right': setting.right,
-//           'background-image': 'url(' + setting.nekoImg + ')',
-//         });
-//       show(getBasicInfo());
-//       $(window)
-//         .scroll(function () {
-//           let basicInfo = getBasicInfo();
-//           show(basicInfo);
-//           $(getThis)
-//             .css({
-//               'position': 'fixed',
-//               'width': setting.scroWidth,
-//               'top': setting.top,
-//               'height': basicInfo.Band_H * setting.zoom * basicInfo.ViewH * 0.01 + 'px',
-//               'z-index': setting.z_index,
-//               'background-color': setting.bgcolor,
-//               "border-radius": setting.borderRadius,
-//               'right': setting.right,
-//               'background-image': 'url(' + setting.scImg + ')',
-//               'background-image': '-webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent)', 'border-radius': '2em',
-//               'background-size': 'contain'
-//             });
-//           $("#" + setting.nekoname)
-//             .css({
-//               'position': 'fixed',
-//               'top': basicInfo.Band_H * setting.zoom * basicInfo.ViewH * 0.01 - 50 + 'px',
-//               'z-index': setting.z_index * 10,
-//               'right': setting.right,
-//               'background-image': 'url(' + setting.nekoImg + ')',
-//             });
-//           if (basicInfo.ScrollTop == basicInfo.S_V) {
-//             $("#" + setting.nekoname)
-//               .addClass("showMsg")
-//           } else {
-//             $("#" + setting.nekoname)
-//               .removeClass("showMsg");
-//             $("#" + setting.nekoname)
-//               .attr("data-msg", setting.hoverMsg);
-//           }
-//         });
-//       this.click(function (e) {
-//         btf.scrollToDest(0, 500)
-//       });
-//       $("#" + setting.nekoname)
-//         .click(function () {
-//           btf.scrollToDest(0, 500)
-//         });
-//       return this;
-//     }
-//   })(jQuery);
-
-//   $(document).ready(function () {
-//     //部分自定义
-//     $("#myscoll").nekoScroll({
-//       bgcolor: 'rgb(0 0 0 / .5)', //背景颜色，没有绳子背景图片时有效
-//       borderRadius: '2em',
-//       zoom: 0.9
-//     }
-//     );
-    //自定义（去掉以下注释，并注释掉其他的查看效果）
-    /*
-    $("#myscoll").nekoScroll({
-        nekoname:'neko1', //nekoname，相当于id
-        nekoImg:'img/猫咪.png', //neko的背景图片
-        scImg:"img/绳1.png", //绳子的背景图片
-        bgcolor:'#1e90ff', //背景颜色，没有绳子背景图片时有效
-        zoom:0.9, //绳子长度的缩放值
-        hoverMsg:'你好~喵', //鼠标浮动到neko上方的对话框信息
-        right:'100px', //距离页面右边的距离
-        fontFamily:'楷体', //对话框字体
-        fontSize:'14px', //对话框字体的大小
-        color:'#1e90ff', //对话框字体颜色
-        scroWidth:'8px', //绳子的宽度
-        z_index:100, //不用解释了吧
-        during:1200, //从顶部到底部滑动的时长
-    });
-    */
-//   })
-// }
-
-/* 小猫咪 end */
-
-//----------------------------------------------------------------
-
 /* 右键菜单 start */
 function setMask() {
   //设置遮罩
@@ -906,6 +515,19 @@ function popupMenu() {
     $('.rightMenu-group.hide').hide();
     if (document.getSelection().toString()) {
       $('#menu-text').show();
+    }
+    $('#menu-text #copy').hide();
+    $('#menu-text #reply').hide();
+    //如果有文字选中，则显示 文字选中相关的菜单项
+    if(document.getSelection().toString()){
+        $('#menu-text #copy').show();
+    }
+    const currentPath = window.location.pathname;
+    if (document.getSelection().toString() && currentPath.startsWith('/posts/')) {
+      // 如果页面中没有弹窗元素，则显示按钮并调用函数显示弹窗
+		  if (!document.getElementById('popup')) {
+			  $('#menu-text #reply').show();
+		  }
     }
     if (document.getElementById('post')) {
       $('#menu-post').show();
@@ -1286,11 +908,11 @@ var titleTime;
 document.addEventListener('visibilitychange', function () {
   if (document.hidden) {
     //离开当前页面时标签显示内容
-    document.title = '🔞男生勿进！女性瘾者的自白';
+    document.title = '⏲️世界线变动';
     clearTimeout(titleTime);
   } else {
     //返回当前页面时标签显示内容
-    document.title = '你被骗啦🤡';
+    document.title = '⏲️世界线收束';
     //两秒后变回正常标题
     titleTime = setTimeout(function () {
       document.title = OriginTitile;
@@ -3139,10 +2761,10 @@ if (localStorage.getItem("blogbg") != undefined) {
   setBg(localStorage.getItem("blogbg"));
 } else {
   document.getElementById("defineBg").innerText = `:root{
-    --default-bg: url(https://jsd.onmicrosoft.cn/gh/bilibiliworld/picgo@main/blog/6.webp);
-    --darkmode-bg:url(https://jsd.onmicrosoft.cn/gh/bilibiliworld/picgo@main/blog/6.webp);
-    --mobileday-bg: url(https://jsd.onmicrosoft.cn/gh/bilibiliworld/picgo@main/pic/2024-10-07_12-20-49.webp);
-    --mobilenight-bg: url(https://jsd.onmicrosoft.cn/gh/bilibiliworld/picgo@main/pic/2024-10-07_12-20-49.webp);
+    --default-bg: url(/img/day.webp);
+    --darkmode-bg:url(/img/night.webp);
+    --mobileday-bg: url(/img/mobile.webp);
+    --mobilenight-bg: url(/img/mobile.webp);
   }`;
 }
 // 切换背景主函数
@@ -3219,7 +2841,7 @@ function checkImgExists(imgurl) {
 
 // 黑夜霓虹灯开关
 if (localStorage.getItem("light") == undefined) {
-  localStorage.setItem("light", "false");
+  localStorage.setItem("light", "true");
 }
 // 这里要适配Pjax
 document.addEventListener('pjax:complete', function () {
@@ -3340,7 +2962,7 @@ function createWinbox() {
 
 
 <h2>二、字体设置</h2>
-{% note warning modern %}非商免字体未经授权只能个人使用。本站为完全非商业、非盈利性质的网站，平时用于个人学习交流，如有侵权请联系站长删除，谢谢！ —— 致版权方{% endnote %}
+<div class="note warning modern">非商免字体未经授权只能个人使用。本站为完全非商业、非盈利性质的网站，平时用于个人学习交流，如有侵权请联系站长删除，谢谢！ —— 致版权方</p>\n</div>\n
 <p id="swfs">
 <a class="swf" id="swf_ZhuZiAWan" href="javascript:;" rel="noopener external nofollow" style="font-family:'ZhuZiAWan'!important;color:black" onclick="setFont('ZhuZiAWan')">筑紫A丸标准体2.0</a>
 <a class="swf" id="swf_HYTMR" href="javascript:;" rel="noopener external nofollow" style="font-family:'HYTMR'!important;color:black" onclick="setFont('HYTMR')">汉仪唐美人</a>
@@ -3369,105 +2991,32 @@ function createWinbox() {
 <center><button onclick="resetBg()" style="background:var(--theme-color);display:block;width:35%;padding:15px 0;border-radius:30px;color:white;"><i class="fa-solid fa-arrows-rotate"></i>&nbsp;恢复默认背景</button></center>
 
 <h3>1. 二次元</h3>
-{% folding cyan, 查看二次元背景 %}
-<div class="bgbox">
-<a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://lskypro.acozycotage.net/Fomalhaut/img/home_bg.webp)" class="imgbox" onclick="changeBg('url(https://lskypro.acozycotage.net/Fomalhaut/img/home_bg.webp)')"></a>
 
-</div>
-{% endfolding %}
-
+\n<details class="folding-tag" cyan><summary> 查看二次元背景 </summary>\n              <div class='content'>\n              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/yuanshen1.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/yuanshen1.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/dm15.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/dm15.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/dm2.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/dm2.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/dm7.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/dm7.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/dm8.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/dm8.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/dm3.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/dm3.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/dm11.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/dm11.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/dm12.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/dm12.webp)')"></a></div>\n              </div>\n            </details>\n\n\n
 
 <h3>2. 风景</h3>
 
-{% folding cyan, 查看风景背景 %}
-<div class="bgbox">
-<a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://lskypro.acozycotage.net/Fomalhaut/img/fj1.webp)" class="imgbox" onclick="changeBg('url(https://lskypro.acozycotage.net/Fomalhaut/img/fj1.webp)')"></a>
-
-
-</div>
-{% endfolding %}
+\n\n<details class="folding-tag" cyan><summary> 查看风景背景 </summary>\n              <div class='content'>\n              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/fj1.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/fj1.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/fj2.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/fj2.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/fj3.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/fj3.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/fj4.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/fj4.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/fj5.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/fj5.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/fj6.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/fj6.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/fj7.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/fj7.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/fj8.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/fj8.webp)')"></a></div>\n              </div>\n            </details>\n\n
 
 <h3>3. 萌宠</h3>
 
-{% folding cyan, 查看萌宠背景 %}
-<div class="bgbox">
-<a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://lskypro.acozycotage.net/Fomalhaut/img/mc1.webp)" class="imgbox" onclick="changeBg('url(https://lskypro.acozycotage.net/Fomalhaut/img/mc1.webp)')"></a>
-
-</div>
-{% endfolding %}
+\n\n<details class="folding-tag" cyan><summary> 查看萌宠背景 </summary>\n              <div class='content'>\n              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mc1.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mc1.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mc2.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mc2.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mc3.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mc3.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mc4.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mc4.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mc5.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mc5.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mc6.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mc6.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mc7.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mc7.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mc8.webp)" class="imgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mc8.webp)')"></a></div>\n              </div>\n            </details>\n\n
 
 <h3>4. 渐变色</h3>
-{% folding cyan, 查看渐变色背景 %}
-<div class="bgbox">
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to right, #544a7d, #ffd452)" onclick="changeBg('linear-gradient(to right, #544a7d, #ffd452)')"></a>
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to bottom, #7f7fd5, #86a8e7, #91eae4)" onclick="changeBg('linear-gradient(to bottom, #7f7fd5, #86a8e7, #91eae4)')"></a>
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to left, #654ea3, #eaafc8)" onclick="changeBg('linear-gradient(to left, #654ea3, #eaafc8)')"></a>
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #feac5e, #c779d0, #4bc0c8)" onclick="changeBg('linear-gradient(to top, #feac5e, #c779d0, #4bc0c8)')"></a>
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #d3959b, #bfe6ba)" onclick="changeBg('linear-gradient(to top, #d3959b, #bfe6ba)')"></a>
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #8360c3, #2ebf91)" onclick="changeBg('linear-gradient(to top, #8360c3, #2ebf91)')"></a>
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #108dc7, #ef8e38)" onclick="changeBg('linear-gradient(to top, #108dc7, #ef8e38)')"></a>
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #355c7d, #6c5b7b, #c06c84)" onclick="changeBg('linear-gradient(to top, #355c7d, #6c5b7b, #c06c84)')"></a>
-</div>
-{% endfolding %}
 
+\n<details class="folding-tag" cyan><summary> 查看渐变色背景 </summary>\n              <div class='content'>\n              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to right, #544a7d, #ffd452)" onclick="changeBg('linear-gradient(to right, #544a7d, #ffd452)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to bottom, #7f7fd5, #86a8e7, #91eae4)" onclick="changeBg('linear-gradient(to bottom, #7f7fd5, #86a8e7, #91eae4)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to left, #654ea3, #eaafc8)" onclick="changeBg('linear-gradient(to left, #654ea3, #eaafc8)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #feac5e, #c779d0, #4bc0c8)" onclick="changeBg('linear-gradient(to top, #feac5e, #c779d0, #4bc0c8)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #d3959b, #bfe6ba)" onclick="changeBg('linear-gradient(to top, #d3959b, #bfe6ba)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #8360c3, #2ebf91)" onclick="changeBg('linear-gradient(to top, #8360c3, #2ebf91)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #108dc7, #ef8e38)" onclick="changeBg('linear-gradient(to top, #108dc7, #ef8e38)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #355c7d, #6c5b7b, #c06c84)" onclick="changeBg('linear-gradient(to top, #355c7d, #6c5b7b, #c06c84)')"></a></div>\n              </div>\n            </details>\n\n\n
 
 <h3>5. 纯色</h3>
-{% folding cyan, 查看纯色背景 %}
-<div class="bgbox">
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #ecb1b1" onclick="changeBg('#ecb1b1')"></a> 
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #d3ebac" onclick="changeBg('#d3ebac')"></a> 
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #ace9ce" onclick="changeBg('#ace9ce')"></a>
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #c1ebea" onclick="changeBg('#c1ebea')"></a> 
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #dee7f1" onclick="changeBg('#dee7f1')"></a> 
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #e9e3f2" onclick="changeBg('#e9e3f2')"></a> 
-<a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #f7eff5" onclick="changeBg('#f7eff5')"></a>  
-<input type="color" id="define_colors" href="javascript:;" rel="noopener external nofollow" class="box" autocomplete="on" value="${defineColor}" oninput="changeBgColor()"></input>
-</div>
-{% endfolding %}
 
-
+\n<details class="folding-tag" cyan><summary> 查看纯色背景 </summary>\n              <div class='content'>\n              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #ecb1b1" onclick="changeBg('#ecb1b1')"></a> <a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #d3ebac" onclick="changeBg('#d3ebac')"></a> <a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #ace9ce" onclick="changeBg('#ace9ce')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #c1ebea" onclick="changeBg('#c1ebea')"></a> <a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #dee7f1" onclick="changeBg('#dee7f1')"></a> <a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #e9e3f2" onclick="changeBg('#e9e3f2')"></a> <a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #f7eff5" onclick="changeBg('#f7eff5')"></a>  <input type="color" id="define_colors" href="javascript:;" rel="noopener external nofollow" class="box" autocomplete="on" value="${defineColor}" oninput="changeBgColor()"></input></div>\n              </div>\n            </details>\n\n\n\n
 
 <h3>6. 适配手机</h3>
-{% folding cyan, 查看适配手机的背景 %}
-<div class="bgbox">
-<a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://lskypro.acozycotage.net/Fomalhaut/img/mb4.webp)" class="pimgbox" onclick="changeBg('url(https://lskypro.acozycotage.net/Fomalhaut/img/mb4.webp)')"></a>
 
-</div>
-{% endfolding %}
+\n<details class="folding-tag" cyan><summary> 查看适配手机的背景 </summary>\n              <div class='content'>\n              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mb4.webp)" class="pimgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mb4.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mb5.webp)" class="pimgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mb5.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mb6.webp)" class="pimgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mb6.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mb7.webp)" class="pimgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mb7.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mb8.webp)" class="pimgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mb8.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mb9.webp)" class="pimgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mb9.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mb16.webp)" class="pimgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mb16.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.bitiful.net/img/mb19.webp)" class="pimgbox" onclick="changeBg('url(https://sourcebucket.s3.bitiful.net/img/mb19.webp)')"></a></div>\n              </div>\n            </details>\n\n\n
 
+<h3>7. 自定义背景</h3>
 
-<h3>7. 壁纸API</h3>
-{% folding cyan, 查看壁纸API系列背景 %}
-<div class="bgbox">
-<a id="bingDayBox" rel="noopener external nofollow" style="background-image: ${bingDayBg}" class="box apiBox" onclick="changeBg('${bingDayBg}')"></a>
-<a id="bingHistoryBox" rel="noopener external nofollow" style="background-image: ${bingHistoryBg}" class="box apiBox" onclick="changeBg('${bingHistoryBg}')"></a>
-<a id="EEEDogBox" rel="noopener external nofollow" style="background-image: ${EEEDog}" class="box apiBox" onclick="changeBg('${EEEDog}')"></a>
-<a id="seovxBox" rel="noopener external nofollow" style="background-image: ${seovx}" class="box apiBox" onclick="changeBg('${seovx}')"></a>
-<a id="picsumBox" rel="noopener external nofollow" style="background-image: ${picsum}" class="box apiBox" onclick="changeBg('${picsum}')"></a>
-<a id="waiBizhiBox" rel="noopener external nofollow" style="background-image: ${waiBizhi}" class="box apiBox" onclick="changeBg('${waiBizhi}')"></a>
-<a id="btstuBox" rel="noopener external nofollow" style="background-image: ${btstu}" class="box apiBox" onclick="changeBg('${btstu}')"></a>
-<a id="unsplashBox" rel="noopener external nofollow" style="background-image: ${unsplash}" class="box apiBox" onclick="changeBg('${unsplash}')"></a>
-</div>
-{% endfolding %}
-
-
-<h3>8. 自定义背景</h3>
-{% folding cyan, 设置自定义背景 %}
-<p><center>
-<input type="text" id="pic-link" size="70%" maxlength="1000" placeholder="请输入有效的图片链接，如 https://source.fomal.cc/img/home_bg.webp">
-</center></p>
-<p><center>
-<button type="button" onclick="getPicture()" style="background:var(--theme-color);width:35%;padding: 5px 0px 7px 0px;border-radius:30px;color:white;line-height:2;">🌈切换背景🌈</button>
-</center></p>
-{% endfolding %}
-
-<br>
-<center><div style="font-size:1.2em;color:var(--theme-color);font-weight:bold;">------ ( •̀ ω •́ )y 到底啦 ------</div></center>
-<br>
-
-</div>
-
-</div>
+\n<details class="folding-tag" cyan><summary> 设置自定义背景 </summary>\n              <div class='content'>\n              <p><center><input type="text" id="pic-link" size="70%" maxlength="1000" placeholder="请输入有效的图片链接，如 https://source.fomal.cc/img/home_bg.webp"></center></p><p><center><button class="winbox_btn" type="button" onclick="getPicture()" style="background:var(--theme-color);width:35%;padding: 5px 0px 7px 0px;border-radius:30px;color:white;line-height:2;">🌈切换背景🌈</button></center></p>\n              </div>\n            </details>\n\n
 
 `;
 
@@ -3542,3 +3091,152 @@ function toggleWinbox() {
 }
 
 /* 美化模块 end */
+
+// 加载Twikoo库
+async function loadTwikooLibrary() {
+  return new Promise((resolve, reject) => {
+      if (window.twikoo) {
+          // 如果 Twikoo 库已经加载过，则直接返回成功的 Promise
+          resolve();
+          return;
+      }
+
+      const script = document.createElement('script');
+      script.src = 'https://cdn.staticfile.org/twikoo/1.6.31/twikoo.all.min.js';
+      script.onload = () => {
+          console.log('Twikoo库加载成功');
+          resolve();
+      };
+      script.onerror = () => {
+          reject(new Error('Twikoo库加载失败'));
+      };
+      document.head.appendChild(script);
+  });
+}
+
+// 创建遮罩层
+function createOverlay() {
+  const overlay = document.createElement('div');
+  overlay.id = 'overlay';
+  overlay.classList.add('overlay'); // 添加 CSS 类
+  // 添加点击监听器以关闭弹窗
+  document.addEventListener('click', handleClickOutsidePopup);
+  return overlay;
+}
+
+// 创建弹窗
+function createPopup() {
+  const popup = document.createElement('div');
+  popup.id = 'popup';
+  popup.classList.add('popup'); // 添加 CSS 类
+  return popup;
+}
+
+// 关闭弹窗并移除遮罩层
+function closePopup(popup, overlay) {
+  // 隐藏遮罩层和弹窗的动画
+  overlay.style.opacity = 0;
+  popup.style.opacity = 0;
+
+  // 在动画结束后移除元素
+  setTimeout(() => {
+      document.body.removeChild(popup);
+      document.body.removeChild(overlay);
+      document.removeEventListener('click', handleClickOutsidePopup);
+  }, 300); // 动画持续时间与 transition 持续时间一致
+}
+
+// 点击弹窗外部关闭弹窗
+function handleClickOutsidePopup(event) {
+  const popup = document.getElementById('popup');
+  if (popup && !popup.contains(event.target)) {
+      closePopup(popup, document.getElementById('overlay'));
+  }
+}
+
+// 通用函数：显示提示消息
+function showMessage(message, duration = 2000) {
+  // 创建提示消息元素
+  const replySelectMessage = document.createElement('div');
+  replySelectMessage.innerHTML = message;
+  replySelectMessage.classList.add('pop-message'); // 添加 CSS 类
+  document.body.appendChild(replySelectMessage);
+
+  // 设置初始透明度为0
+  replySelectMessage.style.opacity = '0';
+
+  // 使用 setTimeout 设置动画显示提示消息
+  setTimeout(() => {
+      replySelectMessage.style.opacity = '1';
+  }, 10);
+
+  // 定义移除提示消息的函数
+  function removeMessage() {
+      // 将透明度设置为0，使其隐藏
+      replySelectMessage.style.opacity = '0';
+      
+      // 等待隐藏动画完成后移除元素
+      setTimeout(() => {
+          document.body.removeChild(replySelectMessage);
+      }, 500); // 动画持续时间
+  }
+
+  // 根据指定的持续时间设置定时器来移除提示消息
+  setTimeout(removeMessage, duration);
+}
+
+// 显示带评论的弹窗
+function showPopupWithComments(envId, commentElementId) {
+  // 创建遮罩层
+  const overlay = createOverlay();
+
+  // 创建弹窗
+  const popup = createPopup();
+
+  // 添加评论部分
+  const commentSection = document.createElement('div');
+  commentSection.id = commentElementId;
+  popup.appendChild(commentSection);
+
+  // 将弹窗和遮罩添加到文档中
+  document.body.appendChild(overlay);
+  document.body.appendChild(popup);
+
+  // 初始化 Twikoo
+  twikoo.init({ envId, el: `#${commentElementId}` });
+
+  // 显示提示消息并在 2 秒后移除
+  showMessage('点击弹窗外任意部分即可退出');
+
+  // 显示遮罩层和弹窗的动画
+  setTimeout(() => {
+      overlay.style.opacity = 1;
+      popup.style.opacity = 1;
+  }, 0);
+}
+
+// 使用异步/await确保Twikoo库加载完成后执行操作
+async function replySelect() {
+  rmf.showRightMenu(false);
+  var selectedText = document.getSelection().toString().trim();
+
+  if (selectedText.includes('\n')) {
+      selectedText = selectedText.split('\n')[0].trim();
+  }
+
+  try {
+      // 等待Twikoo库加载完成
+      await loadTwikooLibrary();
+      // 显示带评论的弹窗
+      showPopupWithComments('http://8.223.47.89:8080/', 'comment-section');
+  } catch (error) {
+      console.error(error);
+  }
+
+  const commentBox = document.querySelector("#popup .el-textarea__inner");
+  commentBox.value = `> ${selectedText}\n\n`;
+}
+
+// 将 replySelect 函数绑定到特定事件或对象
+var rm = {};
+rm.replySelect = replySelect;

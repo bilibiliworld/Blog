@@ -3,28 +3,28 @@
 # --------------------------------------
 
 menu:
-  首页: / || icon-home || faa-tada
-  文章 || icon--article || faa-tada || hide:
-    归档: /archives/ || icon-guidang1 || faa-tada
-    标签: /tags/ || icon-sekuaibiaoqian || faa-tada
-    分类: /categories/ || icon-fenlei || faa-tada
-  休闲 || icon-pinweishenghuo || faa-tada || hide:
-    音乐: /music/ ||icon-yinle || faa-tada
-    电影: /movies/ ||icon-dianying1 || faa-tada
-    书籍: /books/ || icon-xianxingshalou || faa-tada
-  宅舍 || icon-xiangzi || faa-tada || hide:
-    相册: /gallery ||icon-tubiaozhizuomoban || faa-tada
-    动画: /bangumis/ || icon-nvwumao || faa-tada
-    游戏: /games/ || icon-youxishoubing || faa-tada
-  社交 || icon-shejiaoxinxi || faa-tada || hide:
+  首页: / || icon-baibaoxiang || faa-tada
+  文章 || icon-youhuawenzhang || faa-tada || hide:
+    归档: /archives/ || icon-shalou || faa-tada
+    标签: /tags/ || icon-biaoqian || faa-tada
+    分类: /categories/ || icon-fenlei1 || faa-tada
+  休闲 || icon-burgerKing || faa-tada || hide:
+    音乐: /music/ ||icon-yinyue || faa-tada
+    电影: /movies/ ||icon-dianyingpiao || faa-tada
+    书籍: /books/ || icon-xiangsufeng_shuji || faa-tada
+  宅舍 || icon-pokeball || faa-tada || hide:
+    相册: /gallery/ ||icon-zhaopian || faa-tada
+    动画: /bangumis/ || icon-my2 || faa-tada
+    游戏: /steamgames/ || icon-youxishoubing || faa-tada
+  社交 || icon-tubiaozhizuomoban || faa-tada || hide:
     朋友圈: /fcircle/ || icon-pengyouquan || faa-tada
     留言板: /comments/ || icon-liuyan || faa-tada
     友人帐: /link/ || icon-lianjie || faa-tada
-  网站 || icon-wangye || faa-tada || hide:
-    个人网盘: https://alist.002026.xyz || icon--tongjibiao || faa-tada
-    自建GPT: https://gpt.002026.xyz || icon-shujutongji1 || faa-tada
+  网站 || icon-WEBSITE || faa-tada || hide:
+    个人网盘: https://alist.002026.xyz || icon-panruyo || faa-tada
+    自建GPT: https://gpt.002026.xyz || icon-gpt || faa-tada
     图床: https://pic.002026.xyz || icon-zhifengche || faa-tada
-  个人 || icon-maoliang || faa-tada || hide:
+  个人 || icon-heike || faa-tada || hide:
     哔哔: /bb/ || icon-qunliaotian || faa-tada
     伊甸乐园: /love/ || icon-love-sign || faa-tada
     关于: /about/ || icon-paperplane || faa-tada
@@ -113,7 +113,7 @@ favicon:
 
 # Avatar (頭像)
 avatar:
-  img: https://jsd.onmicrosoft.cn/gh/bilibiliworld/picgo@main/blog/1.webp
+  img: /img/avator.webp
   effect: false
 
 # Disable all banner image
@@ -156,16 +156,16 @@ cover:
   position: both
   # When cover is not set, the default cover is displayed (當沒有設置cover時，默認的封面顯示)
   default_cover:
-    - https://jsd.onmicrosoft.cn/gh/bilibiliworld/picgo@main/blog/8.webp
-    - https://source.fomal.cc/img/default_page_cover.webp
-    - https://source.fomal.cc/img/default_cover_2.webp
-    - https://source.fomal.cc/img/default_cover_6.webp
-    - https://source.fomal.cc/img/default_cover_16.webp
-    - https://source.fomal.cc/img/default_cover_74.webp
-    - https://source.fomal.cc/img/default_cover_90.webp
-    - https://source.fomal.cc/img/default_cover_120.webp
-    - https://source.fomal.cc/img/default_cover_156.webp
-    - https://source.fomal.cc/img/default_cover_174.webp
+    - /img/siteshot.webp
+    - /img/default_cover_1.webp
+    - /img/default_cover_2.webp
+    - /img/default_cover_3.webp
+    - /img/default_cover_4.webp
+    - /img/default_cover_5.webp
+    - /img/default_cover_6.webp
+    - /img/default_cover_7.webp
+    - /img/default_cover_8.webp
+    - /img/default_cover_9.webp
     
     
     # ...
@@ -238,9 +238,9 @@ reward:
     - img: https://jsd.onmicrosoft.cn/gh/bilibiliworld/picgo@main/blog/2.webp
       link:
       text: 微信
-    # - img: 
-    #   link:
-    #   text: 支付宝
+    - img: https://jsd.onmicrosoft.cn/gh/bilibiliworld/picgo@main/pic/2024-10-15_23-43-11.webp
+      link:
+      text: 支付宝
 
 # Post edit
 # Easily browse and edit blog source code online.
@@ -545,8 +545,8 @@ index_top_img_height:
 # The user interface setting of category and tag page (category和tag頁的UI設置)
 # index - same as Homepage UI (index 值代表 UI將與首頁的UI一樣)
 # default - same as archives UI 默認跟archives頁面UI一樣
-category_ui: # 留空或 index
-tag_ui: # 留空或 index
+category_ui: index
+tag_ui: index
 
 # Website Background (設置網站背景)
 # can set it to color or image (可設置圖片 或者 顔色)
@@ -609,7 +609,7 @@ activate_power_mode:
 
 # Mouse click effects: fireworks (鼠標點擊效果: 煙火特效)
 fireworks:
-  enable: false
+  enable: true
   zIndex: 9999 # -1 or 9999
   mobile: false
 
@@ -690,7 +690,7 @@ subtitle:
 preloader:
   enable: true # true|false
   load_color: # '#37474f'
-  load_style: heo # default|gear|ironheart|scarecrow|triangles|wizard|image|spincat|heo(新增)
+  load_style: nyancat # default|gear|ironheart|scarecrow|triangles|wizard|image|spincat|heo|nyancat(新增)
   load_image: # url
 
 # aside (側邊欄)
@@ -703,8 +703,8 @@ aside:
   mobile: true # display on mobile
   position: right # left or right
   display:
-    archive: true
-    tag: true
+    archive: false
+    tag: false
     category: true
   card_author:
     enable: true
@@ -718,7 +718,7 @@ aside:
     enable: true
     content: <center><b>--- 主域名 ---<br><a href="https://002026.xyz" title="此线路部署于阿里云香港vps" class="anno_content"><font color="#EC729C">002026.xyz</font></a>&nbsp;|&nbsp;<a href="https://loliking.vercel.app" title="此线路部署于Vercel" class="anno_content"><font color="#EC729C">loliking.vercel.app</font></a><br>--- AI聚合网站 ---<br><a href="https://gpt.002026.xyz" title="自建GPT综合站" class="anno_content"><font color="#EC729C">gpt.002026.xyz</font></a><br>--- 个人网盘 ---<br><a href="https://alist.002026.xyz" title="自建Alist网盘" class="anno_content"><font color="#EC729C">alist.002026.xyz</font></a><br>--- 个人图床 ---<br><a href="https://pic.002026.xyz" title="没有密码" class="anno_content"><font color="#EC729C">pic.002026.xyz</font></a></b></center>
   card_recent_post:
-    enable: false
+    enable: true
     limit: 3 # if set 0 will show all
     sort: date # date or updated
     sort_order: # Don't modify the setting unless you know how it works
@@ -740,7 +740,7 @@ aside:
     limit: 8 # if set 0 will show all
     sort_order: # Don't modify the setting unless you know how it works
   card_webinfo:
-    enable: true
+    enable: false
     post_count: true
     last_push_date: true
     sort_order: # Don't modify the setting unless you know how it works
@@ -916,10 +916,9 @@ css_prefix: true
 inject:
   head:
     # - <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"> # 常规css
-    - <link rel="stylesheet" href="/css/index.css">
-    - <link rel="stylesheet" href="/css/vue.css"> # 引入组件库(f12)
-    - <link rel="stylesheet" href="https://cdn1.tianli0.top/gh/zhheo/Post-Abstract-AI@0.14/tianli_gpt.css">
-    - <link rel="stylesheet" href="/css/showbb_in_index.css">
+    - <link rel="preload" href="/css/vue.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    - <link rel="preload" href="/css/tianli_gpt.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    - <link rel="preload" href="/css/showbb_in_index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     # - <link rel="stylesheet" href="/css/swiper-bundle.min.css">
     # 综合美化模块样式引入
     - <style id="themeColor"></style> # 主题色
@@ -933,26 +932,36 @@ inject:
 
   bottom:
     - <script src="/js/jquery.min.js"></script> # jQuery
-    # - <script async src="/js/fancybox.umd.min.js"></script> # fancybox
+
+    # - <script src="/js/axios.min.js"></script>
+    # - <script src="/js/autoload.js"></script> # live2d
+
+    # - <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
+    # - <script src="https://cdn.jsdelivr.net/combine/gh/dylanNew/live2d/webgl/Live2D/lib/live2d.min.js,npm/pixi.js@6.5.2/dist/browser/pixi.min.js,npm/pixi-live2d-display/dist/index.min.js,gh/Weidows-projects/Live2dLoader/dist/Live2dLoader.min.js"></script>
+    # - <script src="/js/live2d.js"></script>
+
+    - <meting-js server="netease" type="playlist" id="12371483045" theme="#339981" fixed="true" preload="none" autoplay="false" loop="all" order="random" volume="0.3"></meting-js>
+    - <script src="/js/cat.js"></script>
+    - <script defer type="text/javascript" src="/js/sweetalert2.all.min.js"></script> # 节日弹窗依赖
+    - <script defer src="/js/fancybox.umd.min.js"></script> # fancybox
+    - <script defer src="/js/winbox.bundle.min.js"></script> # winbox
     - <script async src="/js/vue.min.js"></script> # VUE
     - <script async src="/js/index.min.js"></script> # ElementUI
     - <script async src="/js/clipboard.min.js"></script> # 分享按钮依赖
-    - <script defer type="text/javascript" src="/js/sweetalert2.all.min.js"></script> # 节日弹窗依赖
     # - <script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script> # 顶部进度条js
     - <script async src="/js/pace.min.js"></script> # 顶部进度条js
-    - <script defer src="/js/winbox.bundle.min.js"></script> # winbox
     - <script async src="/js/font_3586335_hsivh70x0fm.js"></script> # js图标引入1
     - <script async src="/js/font_3636804_gr02jmjr3y9.js"></script> # js图标引入2
     - <script async src="/js/font_3612150_kfv55xn3u2g.js"></script> # js图标引入3
-    - <script async src="/js/Gold-ingot.js"></script>  # 新年元宝
+    - <script async src="/js/font_4714748_0z5qwvfgdkq.js"></script> # js图标引入4
+    # - <script async src="/js/Gold-ingot.js"></script>  # 新年元宝
     - <canvas id="universe"></canvas> # 星空画布
     - <canvas id="snow"></canvas> # 雪花画布
     - <script defer src="/js/fomal.js"></script> # 主模块js
-    # - <script defer src="/js/cursor.js"></script> # 鼠标指针js
-    - <script defer src="/js/Meting2.min.js"></script> # 音乐插件js
+    # - <script defer src="/js/Meting2.min.js"></script> # 音乐插件js
     - <script async data-pjax src="/js/music.js"></script> # 音乐界面js
     - <script>let tianliGPT_postSelector = '\#post \#article-container';let tianliGPT_key = '095195259a0ac9ab6d15';let tianliGPT_wordLimit = 2000;</script>
-    - <script src="https://cdn1.tianli0.top/gh/zhheo/Post-Abstract-AI@0.14/tianli_gpt.min.js"></script>
+    - <script src="/js/tianli_gpt.min.js"></script>
 
 # CDN
 # Don't modify the following settings unless you know how they work
@@ -1013,7 +1022,7 @@ CDN:
     # pangu:
     # fancybox_css_v4: https://cdn.staticfile.org/fancyapps-ui/4.0.31/fancybox.min.css
     fancybox_css_v4: /css/fancybox.min.css
-    fancybox_v4: /js/fancybox.umd.min.js
+    # fancybox_v4: /js/fancybox.umd.min.js
     # medium_zoom: https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/medium-zoom/1.0.6/medium-zoom.min.js
     # snackbar_css: https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css
     # snackbar: https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js
@@ -1030,7 +1039,7 @@ CDN:
     # aplayer_js: https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js
     aplayer_js: /js/APlayer.min.js
     # meting_js: https://cdn1.tianli0.top/npm/js-heo@1.0.12/metingjs/Meting.min.js
-    meting_js: /js/Meting.min.js
+    meting_js: /js/Meting2.min.js
     # prismjs_js: https://cdn1.tianli0.top/npm/prismjs@1.1.0/prism.js
     # prismjs_lineNumber_js: https://cdn1.tianli0.top/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js
     # prismjs_autoloader: https://cdn1.tianli0.top/npm/prismjs/plugins/autoloader/prism-autoloader.min.js

@@ -23,6 +23,8 @@ let galleryContent = `---
 title: 相册集
 date: ${new Date().toISOString()}
 comments: false
+aside: false
+sitemap: false
 ---
 
 <div class="gallery-group-main">
@@ -50,6 +52,8 @@ folders.forEach(folder => {
 title: ${title}
 date: ${new Date().toISOString()}
 comments: false
+aside: false
+sitemap: false
 ---
 
 {% gallery true, 220, 10 %}

@@ -1,7 +1,9 @@
 ---
 title: 风之谷
-date: 2024-10-09T06:08:34.263Z
+date: 2024-10-13T14:36:22.815Z
 comments: false
+aside: false
+sitemap: false
 ---
 
 {% gallery true, 220, 10 %}

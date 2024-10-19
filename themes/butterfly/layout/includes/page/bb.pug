@@ -1,7 +1,7 @@
-link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/js-heo@1.0.11/bb/bber.css', type='text/css')
+link(rel='stylesheet', href='/css/bber.css', type='text/css')
 style(type='text/css').
   .timeline ul li::before{
-  background-image: url(https://jsd.onmicrosoft.cn/gh/bilibiliworld/picgo@main/blog/1.webp);
+  background-image: url(/img/avator.webp);
   }
 h1.page-title(style='display: inline;')= page.title
 #bber-loading
@@ -11,4 +11,4 @@ h1.page-title(style='display: inline;')= page.title
   .js-pjax
     script.
       var bbapiurl = "https://6262-bb-8gg0qn6z78dae0d6-1329727353.tcb.qcloud.la/json/bber-list.json?sign=ef3bc6c0adbd71f118c436fafe339a06&t=1727841507"
-    script(type='text/javascript', src='https://cdn.jsdelivr.net/gh/zhheo/bber@main/heobber.js', data-pjax='')
+    script(type='text/javascript', src='/js/heobber.js', data-pjax='')

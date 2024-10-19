@@ -13,7 +13,7 @@ mixin rightsideItem(array)
         if darkmode.enable && darkmode.button
           //- button#darkmode(type="button" title=_p('rightside.night_mode_title'))
           //-   i.fas.fa-adjust
-          a.icon-V.hidden(onclick='switchNightMode()',  title=_p('rightside.night_mode_title'))
+          a.icon-V.hidden(onclick='switchNightMode()',title=_p('rightside.night_mode_title'),href='#')
             svg(width='25', height='25', viewBox='0 0 1024 1024')
               use#modeicon(xlink:href='#icon-moon')
       when 'hideAside'

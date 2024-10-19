@@ -1,23 +1,22 @@
 ---
 title: 朋友圈
-date: 2024-10-01 00:38:16
+date: 2024-10-11 00:38:16
+comments: false
+aside: false
 ---
-
 <div id="hexo-circle-of-friends-root"></div>
 <script>
     let UserConfig = {
         // 填写你的api地址
-        private_api_url: 'http://8.223.47.89:8000/',
-        // 初始加载几篇文章
-        page_init_number: 20,
+        private_api_url: 'https://fcircle.002026.xyz/',
         // 点击加载更多时，一次最多加载几篇文章，默认10
-        page_turning_number: 10,
+        page_turning_number: 12,
         // 头像加载失败时，默认头像地址
-        error_img: 'https://sdn.geekzu.org/avatar/57d8260dfb55501c37dde588e7c3852c',
+        error_img: '/img/avator.webp',
         // 进入页面时第一次的排序规则
-        sort_rule: 'created',
-        // 本地文章缓存数据过期时间（天）
-        expire_days: 1, 
+        sort_rule: 'created'
     }
 </script>
-<script type="text/javascript" src="https://npm.elemecdn.com/fcircle-theme-yyyz@1.0.13/dist/fcircle.min.js"></script>
+<link rel="stylesheet" href="/css/heoMainColor.css">
+<script type="text/javascript" src="/js/app.min.js"></script>
+<script type="text/javascript" src="/js/bundle.js"></script>

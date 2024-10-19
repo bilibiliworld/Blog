@@ -1,7 +1,9 @@
 ---
 title: 攻壳机动队S.A.C 2ND
-date: 2024-10-09T06:08:34.236Z
+date: 2024-10-13T14:36:22.772Z
 comments: false
+aside: false
+sitemap: false
 ---
 
 {% gallery true, 220, 10 %}

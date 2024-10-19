@@ -1,7 +1,9 @@
 ---
 title: 魔法使之夜
-date: 2024-10-09T06:08:34.265Z
+date: 2024-10-13T14:36:22.818Z
 comments: false
+aside: false
+sitemap: false
 ---
 
 {% gallery true, 220, 10 %}

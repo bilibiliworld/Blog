@@ -1,7 +1,9 @@
 ---
 title: 波西米亚狂想曲
-date: 2024-10-09T06:08:34.245Z
+date: 2024-10-13T14:36:22.785Z
 comments: false
+aside: false
+sitemap: false
 ---
 
 {% gallery true, 220, 10 %}

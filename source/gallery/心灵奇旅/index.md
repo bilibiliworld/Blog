@@ -1,7 +1,9 @@
 ---
 title: 心灵奇旅
-date: 2024-10-09T06:08:34.229Z
+date: 2024-10-13T14:36:22.764Z
 comments: false
+aside: false
+sitemap: false
 ---
 
 {% gallery true, 220, 10 %}

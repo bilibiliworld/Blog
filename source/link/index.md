@@ -2,27 +2,28 @@
 title: 友人帐
 date: 2022-08-10 15:39:15
 type: "link"
+aside: false
 ---
 
 ## 本站友链添加方式：
 {% tabs link %}
 <!-- tab 🙋 butterfly-💭candy -->
 ```yml
-    - name: loliking🦄🪽
+    - name: 萌王之乡🦄🪽
       link: https://002026.xyz/
-      avatar: https://002026.xyz/assets/1.webp
+      avatar: https://002026.xyz/img/avator.webp
       descr: 当你凝视萝莉时，萝莉也在凝视你
-      siteshot: https://002026.xyz/assets/siteshot.webp
+      siteshot: https://002026.xyz/img/siteshot.webp
 ```
 <!-- endtab -->
 
 <!-- tab 🥗Volantis -->
 ```JSON
 {
-  "title": "loliking🦄🪽",
-  "screenshot": "https://002026.xyz/assets/siteshot.webp",
+  "title": "萌王之乡🦄🪽",
+  "screenshot": "https://002026.xyz/img/siteshot.webp",
   "url": "https://002026.xyz/",
-  "avatar": "https://002026.xyz/assets/1.webp",
+  "avatar": "https://002026.xyz/img/avator.webp",
   "description": "当你凝视萝莉时，萝莉也在凝视你",
   "keywords": "loliking🦄🪽"
 }
@@ -33,10 +34,10 @@ type: "link"
 
 | 名称       | 数值                                                         |
 | ---------- | ------------------------------------------------------------ |
-| 站点名称   | loliking🦄🪽                                                   |
-| 站点截图   | https://002026.xyz/assets/siteshot.webp |
+| 站点名称   | 萌王之乡🦄🪽                                                   |
+| 站点截图   | https://002026.xyz/img/siteshot.webp |
 | 站点链接   | https://002026.xyz/                                        |
-| 站长头像   | https://002026.xyz/assets/1.webp                         |
+| 站长头像   | https://002026.xyz/img/avator.webp                         |
 | 站点描述   | 当你凝视萝莉时，萝莉也在凝视你                         |
 | 站点关键词 | loliking🦄🪽,个人博客,网络                                     |
 

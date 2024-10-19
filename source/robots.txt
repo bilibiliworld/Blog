@@ -2,26 +2,29 @@ User-agent: *
 Allow: /
 Allow: /about/
 Allow: /archives/
-Allow:/bangumis/
-Allow:/bb/
+Allow: /bangumis/
+Allow: /bb/
+Allow: /books/
 Allow: /categories/
-Allow:/comments/
-Allow:/fcircle/
-Allow:/link/
-Allow:/love/
-Allow:/movies/
-Allow:/music/
-Allow:/posts/
+Allow: /comments/
+Allow: /fcircle/
+Allow: /games/
+Allow: /link/
+Allow: /love/
+Allow: /movies/
+Allow: /music/
+Allow: /posts/
 Allow: /tags/
 
-Disallow:/assets/
+Disallow: /*.json$
+Disallow: /assets/
 Disallow: /css/
-Disallow:/gallery/
-Disallow:/img/
+Disallow: /cursor/
+Disallow: /gallery/
+Disallow: /img/
 Disallow: /js/
 Disallow: /lib/
 Disallow: /fonts/
-Disallow: /fancybox/
+Disallow: /webfonts/
 
 Sitemap: https://002026.xyz/sitemap.xml
-Sitemap: https://002026.xyz/baidu_sitemap.xml
