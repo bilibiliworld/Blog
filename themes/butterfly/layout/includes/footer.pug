@@ -1,0 +1,71 @@
+#footer-wrap
+  #ft
+    .ft-item-1
+      .t-top
+        .t-t-l
+          p.ft-t.t-l-t 格言🧬
+          .bg-ad
+            div
+              | 爱具体的人，不要爱抽象的人。要爱生活，不要爱生活的意义。我越是爱整个人类，就越是不爱具体的人。我对具体的人越是憎恨，我对整个人类的爱便越是炽烈。✨
+            .btn-xz-box
+              a.btn-xz(href='https://reader.002026.xyz/') 点击阅读全文
+        .t-t-r
+          p.ft-t.t-l-t 猜你想看💡
+          ul.ft-links
+            li
+              a(href='https://space.bilibili.com/248603390/') B站主页
+              a(href='https://lolinav.netlify.app/') 网址导航
+            li
+              a(href='/link/') 我的朋友
+              a(href='/comments/') 留点什么
+            li
+              a(href='/about/') 关于作者
+              a(href='/archives/') 文章归档
+            li
+              a(href='/categories/') 文章分类
+              a(href='/tags/') 文章标签
+            li
+              a(href='/gallery/') 我的画廊
+              a(href='/bb/') 我的唠叨
+    .ft-item-2
+      p.ft-t 推荐友链⌛
+      .ft-img-group
+        .img-group-item
+          a(href='https://www.fomal.cc/' title='Fomalhaut🥝')
+            img(src='https://sourcebucket.s3.bitiful.net/img/avatar.webp' alt='Fomalhaut' width='100' height='100' style='width:100%; height:auto;')
+        .img-group-item
+          a(href='https://tzy1997.com/' title='唐志远の博客')
+            img(src='https://sourcebucket.s3.bitiful.net/img/tzy.webp' alt='唐志远の博客' width='100' height='100' style='width:100%; height:auto;')
+        .img-group-item
+          a(href='https://akilar.top/' title='Akilarの糖果屋')
+            img(src='https://sourcebucket.s3.bitiful.net/img/akilar.jpg' alt='Akilarの糖果屋' width='100' height='100' style='width:100%; height:auto;')
+        .img-group-item
+          a(href='https://anzhiy.cn/' title='安知鱼')
+            img(src='https://sourcebucket.s3.bitiful.net/img/anzhiyu.jpg' alt='安知鱼' width='100' height='100' style='width:100%; height:auto;')
+
+  if theme.footer.owner.enable
+    - var now = new Date()
+    - var nowYear = now.getFullYear()
+    //- if theme.footer.owner.since && theme.footer.owner.since != nowYear
+    //-   .copyright!= `&copy;${theme.footer.owner.since} - ${nowYear} By ${config.author}`
+    //- else
+    //-   .copyright!= `&copy;${nowYear} By ${config.author}`
+    //- 新加的
+    if theme.footer.owner.since && theme.footer.owner.since != nowYear
+      .copyright
+        span!= `<b>&copy;${theme.footer.owner.since}-${nowYear}</b>`
+        span!= `<b>&nbsp;&nbsp;By ${config.author}</b>`
+    else
+       .copyright
+         span!= `<b>&copy;${nowYear}</b>`
+         span!= `<b>&nbsp;&nbsp;By ${config.author}</b>`
+    //- 到这里
+  if theme.footer.copyright
+    .framework-info
+      span= _p('footer.framework') + ' '
+      a(href='https://hexo.io')= 'Hexo'
+      span.footer-separator |
+      span= _p('footer.theme') + ' '
+      a(href='https://github.com/jerryc127/hexo-theme-butterfly')= 'Butterfly'
+  if theme.footer.custom_text
+    .footer_custom_text!=`${theme.footer.custom_text}`

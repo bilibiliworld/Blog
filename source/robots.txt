@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /*.json$
+Disallow: /cursor/
+Disallow: /gallery/
+Disallow: /lib/
+
+Sitemap: https://002026.xyz/sitemap.xml

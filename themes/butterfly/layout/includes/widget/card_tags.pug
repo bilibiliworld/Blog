@@ -1,0 +1,40 @@
+if theme.aside.card_tags.enable && site.tags.length
+  .card-widget.card-tags
+    .item-headline
+      i.fas.fa-tags
+      span= _p('aside.card_tags')
+    #tags-cloud-chart(style="width: 100%; height: 240px;")
+
+  script(src='/js/TagCloud.min.js')
+  script.
+    var tagCloud = !{JSON.stringify(site.tags.map(tag => tag.name).slice(0, 20))} // 限制词云标签数量为10
+    var tagLinks = !{JSON.stringify(site.tags.map(tag => tag.path).slice(0, 20))} // 限制词云链接数量为10
+    var radius = 125; // 调整半径以缩小词云
+
+    var options = {
+      radius: radius,
+      maxSpeed: 'fast',
+      initSpeed: 'fast',
+      direction: 135,
+      keep: true,
+      useContainerInlineStyles: false
+    };
+
+    // 生成词云
+    var tc = TagCloud('#tags-cloud-chart', tagCloud, options);
+
+    // 设置颜色和链接
+    var colors = ['#a33', '#33a', '#3a3', '#3aa', '#a3a', '#aa3'];
+
+    // 使用 setTimeout 确保标签生成后再设置颜色和链接
+    setTimeout(() => {
+      var container = document.getElementById('tags-cloud-chart');
+      var tags = container.querySelectorAll('.tagcloud--item'); // 选择 span 标签
+      tags.forEach((tag, index) => {
+        tag.style.color = colors[index % colors.length]; // 设置标签颜色
+        tag.onclick = function() {
+          window.location.href = '/' + tagLinks[index]; // 设置点击链接
+        };
+        tag.style.cursor = 'pointer'; // 设置鼠标指针为手型
+      });
+    }, 100); // 延迟100毫秒，确保标签生成完成

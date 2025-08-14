@@ -1,0 +1,64 @@
+{
+	"files": [
+		{
+			"path": "_config.butterfly.yml",
+			"bookmarks": [
+				{
+					"line": 519,
+					"column": 0,
+					"label": "主题色"
+				},
+				{
+					"line": 687,
+					"column": 0,
+					"label": "加载动画"
+				}
+			]
+		},
+		{
+			"path": "themes/butterfly/source/css/_custom/custom.css",
+			"bookmarks": [
+				{
+					"line": 200,
+					"column": 0,
+					"label": "导航栏下拉菜单偏移"
+				},
+				{
+					"line": 2996,
+					"column": 0,
+					"label": "待办"
+				}
+			]
+		},
+		{
+			"path": "themes/butterfly/source/css/_layout/web-bg.styl",
+			"bookmarks": [
+				{
+					"line": 11,
+					"column": 0,
+					"label": "背景的手机端切换"
+				}
+			]
+		},
+		{
+			"path": "themes/butterfly/scripts/tag/link.js",
+			"bookmarks": [
+				{
+					"line": 7,
+					"column": 0,
+					"label": "待办"
+				}
+			]
+		},
+		{
+			"path": "themes/butterfly/layout/includes/additional-js.pug",
+			"bookmarks": [
+				{
+					"line": 32,
+					"column": 0,
+					"label": "加载动画错误"
+				}
+			]
+		}
+	]
+}

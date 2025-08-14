@@ -1,0 +1,22 @@
+if hexo-config('preloader.enable')
+  @media (min-width: 768px)
+    if hexo-config('preloader.load_style') == 'gear'
+      @import './_load_style/gear'
+    else if hexo-config('preloader.load_style') == 'ironheart'
+      @import './_load_style/ironheart'
+    else if hexo-config('preloader.load_style') == 'scarecrow'
+      @import './_load_style/scarecrow'
+    else if hexo-config('preloader.load_style') == 'triangles'
+      @import './_load_style/triangles'
+    else if hexo-config('preloader.load_style') == 'wizard'
+      @import './_load_style/wizard'
+    else if hexo-config('preloader.load_style') == 'image'
+      @import './_load_style/image'
+    else if hexo-config('preloader.load_style') == 'spincat'
+      @import './_load_style/spincat'
+    else if hexo-config('preloader.load_style') == 'heo'
+      @import './_load_style/heo'
+    else if hexo-config('preloader.load_style') == 'hyperspace'
+      @import './_load_style/hyperspace'
+    else
+      @import './_load_style/default'

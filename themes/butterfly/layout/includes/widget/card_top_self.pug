@@ -1,0 +1,8 @@
+if site.data.widget && site.data.widget.top
+  each item in site.data.widget.top
+    section.card-widget(class=item.class_name id=item.id_name aria-labelledby=`${item.id_name}-title`)
+      h3.item-headline(id=`${item.id_name}-title`)
+        i(class=item.icon aria-hidden="true")
+        span=item.name
+      .item-content(role="region" aria-label=`${item.name} 内容`)
+        !=item.html

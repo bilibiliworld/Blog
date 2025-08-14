@@ -1,0 +1,8 @@
+if site.data.widget && site.data.widget.bottom
+  each item in site.data.widget.bottom
+    .card-widget(class=item.class_name id=item.id_name style=item.order ? `order: ${item.order}` : '' role="complementary" aria-label=item.name)
+      h3.item-headline
+        i(class=item.icon aria-hidden="true")
+        span=item.name
+      .item-content
+        !=item.html

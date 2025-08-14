@@ -1,0 +1,61 @@
+- class_name: 网络无限宽广
+  flink_style: volantis
+  class_desc: 前排捕捉各位大佬，他们为本站的建设提供了很大帮助~
+  link_list: 
+    - name: Fomalhaut🥝
+      link: https://www.fomal.cc/
+      avatar: https://www.fomal.cc/assets/avatar.webp
+      descr: Future is now 🍭🍭🍭
+      siteshot: https://source.fomal.cc/siteshot/www.fomal.cn.jpg  
+    - name: 安知鱼`Blog
+      link: https://blog.anheyu.com/
+      avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+      descr: 生活明朗，万物可爱
+      siteshot: https://npm.elemecdn.com/anzhiyu-theme-static@1.1.6/img/blog.anheyu.com.jpg
+    - name: Akilar
+      link: https://akilar.top
+      avatar: /img/siteicon/favicon.png
+      descr: 欢迎光临糖果屋
+      siteshot: https://cdn.qyliu.top/i/2024/03/21/65fc582187f19.png
+    - name: 清羽飞扬
+      link: https://blog.liushen.fun/
+      avatar: https://blog.liushen.fun/info/avatar.ico
+      descr: 柳影曳曳，清酒孤灯，扬笔撒墨，心境如霜
+      siteshot: https://blog.liushen.fun/info/siteshot.jpg
+    - name: 爱吃肉的猫
+      link: https://meuicat.com/
+      avatar: https://bu.dusays.com/2023/08/25/64e8ca25e89c5.jpg
+      descr: 有肉有猫有生活.
+    - name: Leonus
+      link: https://blog.leonus.cn/
+      avatar: https://q1.qlogo.cn/g?b=qq&nk=990320751&s=5
+      descr: 进一寸有进一寸的欢喜。
+      rss: /atom.xml
+    - name: Tianli
+      link: https://tianli-blog.club/
+      avatar: https://q2.qlogo.cn/headimg_dl?dst_uin=507249007&spec=640
+      desc: 自知之明是最可贵的知识！
+    - name: 陶小桃Blog
+      link: https://www.52txr.cn
+      avatar: https://z1.ax1x.com/2023/01/12/pSuDn6H.png
+      desc: 热衷于分享日常和技术的机械专业小哥哥~
+    - name: POETIZE
+      link: https://poetize.cn
+      avatar: https://s1.ax1x.com/2022/11/10/z9E7X4.jpg
+      desc: 这是一个 Vue2 Vue3 与 SpringBoot 结合的产物～
+      siteshot: https://s1.ax1x.com/2022/11/10/z9VlHs.png
+
+      
+- class_name: 友链交换名单
+  flink_style: flexcard
+  link_list:
+    - name: GnixAij
+      link: https://vluv.space
+      avatar: https://vluv.space/img/avatar.jpg
+      descr: vluv's space
+      siteshot: https://vluv.space/img/siteshot.webp
+  # link_list:
+  #   - name: 小染笔记
+  #     link: https://onoe.cn
+  #     avatar: https://blog.onoe.cn/wp-content/uploads/2024/06/微信图片_20240630232118.jpg
+  #     descr: 不必借光而行，你我皆是星辰.
