@@ -6,7 +6,7 @@ import { postRedirects } from './src/config/redirects.mjs';
 const buildTime = process.env.SITE_BUILD_TIME ?? new Date().toISOString();
 
 export default defineConfig({
-  site: 'https://www.loliking.com',
+  site: 'https://blog.loliking.com',
   integrations: [mdx(), sitemap({ filter: (page) => !Object.keys(postRedirects).some((slug) => page.endsWith(`/posts/${slug}/`)) })],
   vite: { define: { __SITE_BUILD_TIME__: JSON.stringify(buildTime) } },
 });
