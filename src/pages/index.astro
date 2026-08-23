@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostList from '../components/PostList.astro';
+import { getPublishedPosts } from '../lib/posts';
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout>
+  <section class="hero">
+    <p class="eyebrow">个人技术笔记</p>
+    <h1>把复杂的问题，写得清楚一点。</h1>
+    <p>记录软件工程、工具与学习过程中的思考。</p>
+  </section>
+  <PostList {posts} />
+</BaseLayout>

@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+import { categories } from '../../config/taxonomy';
+import { getPublishedPosts } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return Object.entries(categories).map(([category, label]) => ({
+    params: { category },
+    props: { label, posts: posts.filter((post) => post.data.category === category) },
+  })).filter((entry) => entry.props.posts.length > 0);
+}
+
+const { label, posts } = Astro.props;
+---
+
+<BaseLayout title={label} description={`${label}分类下的技术文章。`}>
+  <section class="page-heading"><p class="eyebrow">分类</p><h1>{label}</h1></section>
+  <PostList {posts} />
+</BaseLayout>

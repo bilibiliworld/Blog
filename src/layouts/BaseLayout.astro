@@ -1,0 +1,54 @@
+---
+import { site } from '../config/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = site.title, description = site.description } = Astro.props;
+const pageTitle = title === site.title ? title : `${title} · ${site.title}`;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="alternate" type="application/rss+xml" title={site.title} href="/rss.xml" />
+    <title>{pageTitle}</title>
+    <script is:inline>
+      const savedTheme = localStorage.getItem('theme');
+      const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = savedTheme || preferredTheme;
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="site-nav" aria-label="主导航">
+        <a class="brand" href="/">{site.title}</a>
+        <div class="nav-links">
+          <a href="/archive/">归档</a>
+          <a href="/about/">关于</a>
+          <a href="/rss.xml">RSS</a>
+          <button class="theme-toggle" type="button" aria-label="切换明暗主题" aria-pressed="false">主题</button>
+        </div>
+      </nav>
+    </header>
+    <main class="page-shell"><slot /></main>
+    <footer class="site-footer">© {new Date().getFullYear()} {site.author} · 用心记录，慢慢生长。</footer>
+    <script is:inline>
+      const themeToggle = document.querySelector('.theme-toggle');
+      themeToggle?.setAttribute('aria-pressed', String(document.documentElement.dataset.theme === 'dark'));
+      themeToggle?.addEventListener('click', () => {
+        const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = nextTheme;
+        localStorage.setItem('theme', nextTheme);
+        themeToggle?.setAttribute('aria-pressed', String(nextTheme === 'dark'));
+      });
+    </script>
+  </body>
+</html>

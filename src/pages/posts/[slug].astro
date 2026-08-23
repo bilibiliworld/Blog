@@ -1,0 +1,35 @@
+---
+import { render } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { categories } from '../../config/taxonomy';
+import { formatDate, getPublishedPosts, tagSlug } from '../../lib/posts';
+import { postRedirects } from '../../config/redirects';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return [
+    ...posts.map((post) => ({ params: { slug: post.data.slug }, props: { post } })),
+    ...Object.entries(postRedirects).map(([slug, target]) => ({ params: { slug }, props: { redirectTo: `/posts/${target}/` } })),
+  ];
+}
+
+const { post, redirectTo } = Astro.props;
+if (redirectTo) return Astro.redirect(redirectTo, 301);
+if (!post) throw new Error('文章路由缺少内容。');
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="article">
+    <header class="article-header">
+      <p class="post-meta"><a href={`/categories/${post.data.category}/`}>{categories[post.data.category]}</a> · {formatDate(post.data.pubDate)}</p>
+      <h1>{post.data.title}</h1>
+      <p class="lead">{post.data.description}</p>
+      {post.data.updatedDate && <p class="updated">更新于 {formatDate(post.data.updatedDate)}</p>}
+      {post.data.cover && <Image class="cover" src={post.data.cover.image} alt={post.data.cover.alt} />}
+    </header>
+    <Content />
+    {post.data.tags.length > 0 && <footer><ul class="tag-list">{post.data.tags.map((tag) => <li><a href={`/tags/${tagSlug(tag)}/`}>#{tag}</a></li>)}</ul></footer>}
+  </article>
+</BaseLayout>

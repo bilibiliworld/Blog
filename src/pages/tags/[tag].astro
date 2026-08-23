@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+import { getPublishedTags, tagSlug } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  return (await getPublishedTags()).map(([tag, data]) => ({ params: { tag: tagSlug(tag) }, props: { tag: data.label, posts: data.posts } }));
+}
+
+const { tag, posts: taggedPosts } = Astro.props;
+---
+
+<BaseLayout title={`#${tag}`} description={`标签 ${tag} 下的技术文章。`}>
+  <section class="page-heading"><p class="eyebrow">标签</p><h1>#{tag}</h1></section>
+  <PostList posts={taggedPosts} />
+</BaseLayout>

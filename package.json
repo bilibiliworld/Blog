@@ -1,0 +1,25 @@
+{
+  "name": "loliking-tech-notes",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "astro": "ASTRO_TELEMETRY_DISABLED=1 node ./node_modules/astro/bin/astro.mjs",
+    "dev": "npm run astro -- dev",
+    "build": "npm run astro -- build",
+    "preview": "npm run astro -- preview",
+    "check": "npm run astro -- check",
+    "test": "npm run build && node scripts/verify-build.mjs",
+    "verify": "npm run check && npm run test"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "latest",
+    "@astrojs/rss": "latest",
+    "@astrojs/sitemap": "latest",
+    "astro": "latest"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "typescript": "latest"
+  }
+}

@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { categories } from '../config/taxonomy';
+import { formatDate, tagSlug } from '../lib/posts';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ol class="post-list">
+  {posts.map((post) => (
+    <li class="post-card">
+      <p class="post-meta">{formatDate(post.data.pubDate)} · <a href={`/categories/${post.data.category}/`}>{categories[post.data.category]}</a></p>
+      <h2><a href={`/posts/${post.data.slug}/`}>{post.data.title}</a></h2>
+      <p>{post.data.description}</p>
+      {post.data.tags.length > 0 && <ul class="tag-list">{post.data.tags.map((tag) => <li><a href={`/tags/${tagSlug(tag)}/`}>#{tag}</a></li>)}</ul>}
+    </li>
+  ))}
+</ol>

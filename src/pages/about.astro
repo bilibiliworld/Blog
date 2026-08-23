@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout title="关于" description={`关于 ${site.author} 与这本技术笔记。`}>
+  <article class="article about"><p class="eyebrow">关于</p><h1>{site.author}</h1><p class="lead">这里是一间持续整理技术经验的纸上工作室。</p><p>博客记录软件工程、工具与学习过程中的实践。具体的社交和联系入口会在准备好后出现在这里。</p></article>
+</BaseLayout>

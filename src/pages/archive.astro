@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostList from '../components/PostList.astro';
+import { getPublishedPosts } from '../lib/posts';
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout title="归档" description="全部已发布的技术笔记。">
+  <section class="page-heading"><p class="eyebrow">归档</p><h1>所有文章</h1></section>
+  <PostList {posts} />
+</BaseLayout>
